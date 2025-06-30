@@ -13,40 +13,42 @@ export const AuthProvider = ({ children }) => {
       setUser({}); // oder fetchUserFromToken(token)
     }
   }, [token]);
-
+  //LOGIN
   const login = async (email, password) => {
-    const res = await fetch("http://localhost:3000/api/login", {
+    const res = await fetch("http://localhost:8080/user/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
     });
 
     const data = await res.json();
-    if (res.ok) {
-      setToken(data.token);
-      localStorage.setItem("token", data.token);
-      setUser(data.user); // falls backend user mitgibt
-    } else {
-      throw new Error(data.message);
+    if (!res.ok) {
+      throw new Error(data.message || "Login fehlgeschlagen");
     }
-  };
 
-  const register = async (email, password) => {
-    const res = await fetch("http://localhost:3000/api/register", {
+    setToken(data.token);
+    localStorage.setItem("token", data.token);
+    setUser(data.user);
+  };
+  //REGISTER
+  const register = async (name, email, password) => {
+    const res = await fetch("http://localhost:8080/user", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ name, email, password }),
     });
 
     const data = await res.json();
-    if (res.ok) {
-      // direkt einloggen oder weiterleiten
-      return login(email, password);
-    } else {
-      throw new Error(data.message);
+    if (!res.ok) {
+      if (res.status === 409) {
+        throw new Error("Diese E-Mail ist bereits registriert.");
+      }
+      throw new Error(data.message || "Registrierung fehlgeschlagen");
     }
-  };
 
+    // await login(email, password); // optional
+  };
+  //LOGOUT
   const logout = () => {
     setUser(null);
     setToken(null);

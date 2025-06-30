@@ -1,4 +1,7 @@
 @import "tailwindcss";
+body {
+  background-color: beige;
+}
 /*
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
