@@ -12,6 +12,13 @@ export default function Navbar() {
       <div className="text-2xl font-bold tracking-wide hover:text-emerald-300 transition duration-300">
         <Link to="/">MindMoney</Link>
       </div>
+      <div className="ml-16">
+        <img
+          src="/MindMoney_Logo.png"
+          alt="MindMoneyLogo"
+          className="w-10 h-10 rounded-full object-cover"
+        />
+      </div>
       <div className="flex space-x-4 items-center">
         {!user ? (
           <>
@@ -32,12 +39,29 @@ export default function Navbar() {
           </>
         ) : (
           <>
-            <Link to="/dashboard" className="hover:underline">
+            <Link
+              to="/dashboard"
+              className="flex items-center gap-2 relative px-4 py-2 rounded hover:text-emerald-300 transition duration-300 before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-emerald-300 hover:before:w-full before:transition-all before:duration-300"
+            >
               Dashboard
             </Link>
-            <button onClick={logout} className="hover:underline">
+            {user ? (
+              <Link
+                to="/login"
+                className="flex items-center gap-2 relative px-4 py-2 rounded hover:text-emerald-300 transition duration-300 before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-emerald-300 hover:before:w-full before:transition-all before:duration-300"
+              >
+                <TbLogin2 />
+                Logout
+              </Link>
+            ) : (
+              // <button onClick={logout} className="hover:underline">
+              //   Logout
+              // </button>
+              <Link to="/login">Login</Link>
+            )}
+            {/* <button onClick={logout} className="hover:underline">
               Logout
-            </button>
+            </button> */}
           </>
         )}
       </div>

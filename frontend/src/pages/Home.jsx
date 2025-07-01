@@ -1,9 +1,4 @@
-const Home = () => {
-  return (
-    <>
-      <div>Home und Startseite hier</div>
-    </>
-  );
-};
-
-export default Home;
+// src/pages/dashboard/Home.jsx
+export default function Home() {
+  return <h1 className="text-3xl font-bold">🏠 Willkommen im Home Bereich</h1>;
+}

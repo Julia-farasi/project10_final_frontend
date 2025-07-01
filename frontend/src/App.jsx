@@ -7,6 +7,10 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Budget from "./pages/Budget";
+import Ziele from "./pages/Ziele";
+import Invest from "./pages/Invest";
+import Zusatz from "./pages/Zusatz";
 
 export default function App() {
   return (
@@ -25,6 +29,10 @@ export default function App() {
               </ProtectedRoute>
             }
           />
+          <Route path="budget" element={<Budget />} />
+          <Route path="ziele" element={<Ziele />} />
+          <Route path="invest" element={<Invest />} />
+          <Route path="zusatz" element={<Zusatz />} />
         </Routes>
       </Router>
     </AuthProvider>
