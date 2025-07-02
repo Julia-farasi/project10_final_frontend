@@ -13,6 +13,7 @@ export const AuthProvider = ({ children }) => {
       setUser({}); // oder fetchUserFromToken(token)
     }
   }, [token]);
+
   //LOGIN
   const login = async (email, password) => {
     const res = await fetch("http://localhost:8080/user/login", {
@@ -29,7 +30,9 @@ export const AuthProvider = ({ children }) => {
     setToken(data.token);
     localStorage.setItem("token", data.token);
     setUser(data.user);
+    console.log("user", user);
   };
+
   //REGISTER
   const register = async (name, email, password) => {
     const res = await fetch("http://localhost:8080/user", {
@@ -48,6 +51,7 @@ export const AuthProvider = ({ children }) => {
 
     // await login(email, password); // optional
   };
+
   //LOGOUT
   const logout = () => {
     setUser(null);

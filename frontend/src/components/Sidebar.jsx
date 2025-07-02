@@ -9,11 +9,11 @@ import {
 } from "react-icons/fa";
 
 const links = [
-  { path: "home", label: "Home", icon: <FaHome /> },
-  { path: "budget", label: "Budget", icon: <FaPiggyBank /> },
-  { path: "ziele", label: "Ziele", icon: <FaBullseye /> },
-  { path: "invest", label: "Invest", icon: <FaChartLine /> },
-  { path: "zusatz", label: "Zusatz", icon: <FaPlusCircle /> },
+  { path: "dashboard/dashboard", label: "Home", icon: <FaHome /> },
+  { path: "dashboard/budget", label: "Budget", icon: <FaPiggyBank /> },
+  { path: "dashboard/ziele", label: "Ziele", icon: <FaBullseye /> },
+  { path: "dashboard/invest", label: "Invest", icon: <FaChartLine /> },
+  { path: "dashboard/zusatz", label: "Zusatz", icon: <FaPlusCircle /> },
 ];
 
 export default function Sidebar() {

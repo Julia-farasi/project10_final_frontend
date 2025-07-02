@@ -1,66 +1,21 @@
 function Footer() {
   return (
-    <footer className="bg-gradient-to-r from-emerald-900 to-green-800 text-white py-6 px-4">
+    // <footer className="bg-gradient-to-r from-emerald-900 to-green-800 text-white py-6 px-4">
+    <footer className="bg-gradient-to-r from-gray-900 to-emerald-600 text-amber-50 p-4 shadow-lg">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
         {/* Links */}
-        <div className="flex space-x-6 text-sm">
+        <div className="text-sm">
           <a
             href="#"
-            className="text-white hover:scale-130 transition-transform duration-500"
-            style={{
-              textShadow: `
-            -2px -2px 0 #000,  
-            2px -2px 0 #000,
-            -2px 2px 0 #000,
-            2px 2px 0 #000
-            `,
-            }}
+            className="text-amber-50 hover:text-emerald-300 transition-transform duration-500"
           >
             Impressum
-          </a>
-          <a
-            href="#"
-            className="text-white hover:scale-130 transition-transform duration-500"
-            style={{
-              textShadow: `
-            -2px -2px 0 #000,  
-            2px -2px 0 #000,
-            -2px 2px 0 #000,
-            2px 2px 0 #000
-            `,
-            }}
-          >
-            Datenschutz
-          </a>
-          <a
-            href="#"
-            className="text-white hover:scale-130 transition-transform duration-500"
-            style={{
-              textShadow: `
-            -2px -2px 0 #000,  
-            2px -2px 0 #000,
-            -2px 2px 0 #000,
-            2px 2px 0 #000
-            `,
-            }}
-          >
-            Kontakt
           </a>
         </div>
 
         {/* Copyright */}
-        <div
-          className="text-xs text-white text-center md:text-right"
-          style={{
-            textShadow: `
-            -2px -2px 0 #000,  
-            2px -2px 0 #000,
-            -2px 2px 0 #000,
-            2px 2px 0 #000
-            `,
-          }}
-        >
-          © {new Date().getFullYear()} Amanda's & Julia's Pokémon Battle Game
+        <div className="text-xs text-amber-50 text-center md:text-right">
+          © {new Date().getFullYear()} Julia's MindMoney WebApp
         </div>
       </div>
     </footer>
