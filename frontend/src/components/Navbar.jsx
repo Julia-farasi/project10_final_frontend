@@ -13,8 +13,8 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-gradient-to-r from-gray-900 to-emerald-600 text-amber-50 px-6 py-4 shadow-lg flex justify-between items-center">
-      {/* Logo + Titel */}
+    <nav className="bg-gradient-to-r from-emerald-600 to-gray-800 text-amber-50 px-6 py-4 shadow-lg flex justify-between items-center">
+      {/* Logo + Titel from-gray-800 to-emerald-600*/}
       <div className="flex items-center space-x-4">
         <img
           src="/MindMoney_Logo.png"

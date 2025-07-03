@@ -8,7 +8,8 @@ export default function Dashboard() {
 
   return (
     <div className="p-8 flex items-center justify-center">
-      <div className="bg-gradient-to-t from-amber-100 to-emerald-700 p-8 rounded-xl shadow-xl text-center max-w-xl w-full">
+      <div className=" bg-gradient-to-t from-amber-100 to-emerald-800 p-8 rounded-xl shadow-xl text-center max-w-xl w-full">
+        {/* bg-gradient-to-t from-amber-100 to-emerald-700 */}
         <h1 className="text-3xl font-bold text-green-300 mb-2">
           Willkommen {user.name}!
         </h1>
