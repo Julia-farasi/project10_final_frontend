@@ -1,4 +1,3 @@
-// src/components/Navbar.jsx
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { BsPersonPlusFill } from "react-icons/bs";
@@ -9,24 +8,25 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    logout(); // Zustand zurücksetzen
-    navigate("/login"); // Weiterleitung nach dem Logout
+    logout();
+    navigate("/login");
   };
 
   return (
-    <nav className="bg-gradient-to-r from-gray-900 to-emerald-600 text-amber-50 p-4 shadow-lg flex justify-between items-center">
+    <nav className="bg-gradient-to-r from-gray-900 to-emerald-600 text-amber-50 px-6 py-4 shadow-lg flex justify-between items-center">
       {/* Logo + Titel */}
-      <div className="text-2xl font-bold tracking-wide hover:text-emerald-300 transition duration-300">
-        <Link to="/">MindMoney</Link>
-      </div>
-
-      {/* Logo-Bild */}
-      <div className="ml-16">
+      <div className="flex items-center space-x-4">
         <img
           src="/MindMoney_Logo.png"
-          alt="MindMoneyLogo"
+          alt="MindMoney Logo"
           className="w-10 h-10 rounded-full object-cover"
         />
+        <Link
+          to="/"
+          className="text-2xl font-orbitron font-semibold tracking-wide hover:text-emerald-300 transition duration-300"
+        >
+          MindMoney
+        </Link>
       </div>
 
       {/* Navigation / Benutzeraktionen */}

@@ -6,11 +6,13 @@ import {
   FaBullseye,
   FaChartLine,
   FaPlusCircle,
+  FaTable,
 } from "react-icons/fa";
 
 const links = [
   { path: "dashboard/dashboard", label: "Home", icon: <FaHome /> },
   { path: "dashboard/budget", label: "Budget", icon: <FaPiggyBank /> },
+  { path: "dashboard/transactions", label: "Übersicht", icon: <FaTable /> },
   { path: "dashboard/ziele", label: "Ziele", icon: <FaBullseye /> },
   { path: "dashboard/invest", label: "Invest", icon: <FaChartLine /> },
   { path: "dashboard/zusatz", label: "Zusatz", icon: <FaPlusCircle /> },

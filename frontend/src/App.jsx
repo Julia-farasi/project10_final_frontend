@@ -17,6 +17,7 @@ import Ziele from "./pages/Ziele";
 import Invest from "./pages/Invest";
 import Zusatz from "./pages/Zusatz";
 import DashboardHome from "./pages/Dashboard"; // kann z. B. Willkommen sein
+import TransactionOverview from "./pages/Transactions";
 
 export default function App() {
   return (
@@ -40,11 +41,12 @@ export default function App() {
             }
           >
             <Route index element={<DashboardHome />} />
+            <Route path="dashboard" element={<DashboardHome />} />
             <Route path="budget" element={<Budget />} />
             <Route path="ziele" element={<Ziele />} />
             <Route path="invest" element={<Invest />} />
             <Route path="zusatz" element={<Zusatz />} />
-            {/* <Route path="transactions" element={<TransactionOverview />} /> */}
+            <Route path="transactions" element={<TransactionOverview />} />
           </Route>
         </Routes>
       </BrowserRouter>

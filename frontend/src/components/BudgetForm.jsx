@@ -4,9 +4,10 @@ import { FaPlusCircle, FaMinusCircle } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { useAuth } from "../context/AuthContext";
 
-export default function BudgetForm({ onSuccess }) {
+export default function BudgetForm({ onSuccess, isInitialExpense = false }) {
+  const [isExpense, setIsExpense] = useState(isInitialExpense);
   const { token } = useAuth();
-  const [isExpense, setIsExpense] = useState(false); // false = Einnahme
+  // const [isExpense, setIsExpense] = useState(false); // false = Einnahme
   const [formData, setFormData] = useState({
     amount: "",
     description: "",

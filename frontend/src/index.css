@@ -3,13 +3,11 @@ body {
   background-color: beige;
 }
 
-body {
-  /* background-image: url('/path/to/your/background.jpg'); Pfad zu deinem Hintergrundbild */
-  /*background-image: url("/public/MindMoneyBackground1.png");  Pfad zu deinem Hintergrundbild */
-  /* background-size: cover; Deckt den gesamten Bildschirm ab */
-  /* background-position: center;  Zentriert das Bild */
-  /* background-repeat: no-repeat; Verhindert das Wiederholen des Bildes */
-}
+/* background-image: url('/path/to/your/background.jpg'); Pfad zu deinem Hintergrundbild */
+/*background-image: url("/public/MindMoneyBackground1.png");  Pfad zu deinem Hintergrundbild */
+/* background-size: cover; Deckt den gesamten Bildschirm ab */
+/* background-position: center;  Zentriert das Bild */
+/* background-repeat: no-repeat; Verhindert das Wiederholen des Bildes */
 
 /*
 :root {
