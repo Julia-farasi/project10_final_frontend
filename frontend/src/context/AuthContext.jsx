@@ -26,11 +26,11 @@ export const AuthProvider = ({ children }) => {
     if (!res.ok) {
       throw new Error(data.message || "Login fehlgeschlagen");
     }
-
+    console.log("dataInAuthContext", data);
     setToken(data.token);
     localStorage.setItem("token", data.token);
     setUser(data.user);
-    console.log("user", user);
+    console.log("userInAuthContext", user);
   };
 
   //REGISTER
