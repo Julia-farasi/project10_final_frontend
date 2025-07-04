@@ -10,20 +10,15 @@ export default function Budget() {
   const [showForm, setShowForm] = useState({ type: null }); // { type: 'income' | 'expense' }
   const [transactions, setTransactions] = useState([]);
   const [summary, setSummary] = useState({ income: 0, expense: 0, diff: 0 });
-  // Load transactions
-  useEffect(() => {
-    const load = async () => {
-      console.log("Aktueller Token:", token);
+  // Daten laden
+  const loadTransactions = async () => {
+    try {
       const res = await fetch("http://localhost:8080/transaction?limit=3", {
         headers: { Authorization: `Bearer ${token}` },
       });
-
-      console.log("res", res);
       const data = await res.json();
-      console.log("data", data);
       setTransactions(data);
 
-      // summary berechnen
       const income = data
         .filter((t) => !t.is_expense)
         .reduce((sum, t) => sum + parseFloat(t.amount), 0);
@@ -32,9 +27,14 @@ export default function Budget() {
         .reduce((sum, t) => sum + parseFloat(t.amount), 0);
 
       setSummary({ income, expense, diff: income - expense });
-    };
+    } catch (err) {
+      console.error("Fehler beim Laden der Transaktionen:", err);
+    }
+  };
 
-    load();
+  // Initialer Aufruf
+  useEffect(() => {
+    if (token) loadTransactions();
   }, [token]);
 
   const incomePercent =
@@ -131,7 +131,7 @@ export default function Budget() {
         {/* Letzte Transaktionen */}
         <div className="bg-[#194A41] border border-[#194A41] rounded-xl p-6 shadow">
           <h2 className="text-lg font-semibold text-[#C2FCEF] mb-4">
-            Deine Letzte Transaktionen
+            Deine Letzten Transaktionen
           </h2>
           <div className="space-y-3">
             {transactions.length === 0 && (
@@ -175,6 +175,7 @@ export default function Budget() {
               isInitialExpense={showForm.type === "expense"}
               isExpense={showForm.type === "expense"}
               onSuccess={() => setShowForm({ type: null })}
+              reload={loadTransactions} //direkte Prop
             />
             <button
               onClick={() => setShowForm({ type: null })}

@@ -10,30 +10,31 @@ export default function Transactions() {
   const [expenses, setExpenses] = useState([]);
   const [showForm, setShowForm] = useState({ type: null }); // 'income' | 'expense'
 
+  const fetchData = async () => {
+    const resIncome = await fetch(
+      `http://localhost:8080/transaction/income?month=${month}`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+    const resExpense = await fetch(
+      `http://localhost:8080/transaction/expense?month=${month}`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+
+    const dataIncome = await resIncome.json();
+    const dataExpense = await resExpense.json();
+    setIncome(dataIncome);
+    setExpenses(dataExpense);
+  };
+
   useEffect(() => {
     if (!token) return;
-
-    const fetchData = async () => {
-      const resIncome = await fetch(
-        `http://localhost:8080/transaction/income?month=${month}`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-      const resExpense = await fetch(
-        `http://localhost:8080/transaction/expense?month=${month}`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-
-      const dataIncome = await resIncome.json();
-      const dataExpense = await resExpense.json();
-      setIncome(dataIncome);
-      setExpenses(dataExpense);
-    };
-
-    fetchData();
+    if (token) {
+      fetchData();
+    }
   }, [month, token]);
 
   const totalIncome = income.reduce((sum, t) => sum + parseFloat(t.amount), 0);

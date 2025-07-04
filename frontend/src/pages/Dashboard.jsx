@@ -12,13 +12,15 @@ export default function Dashboard() {
   const fetchAffirmation = async () => {
     try {
       const response = await fetch(
-        "https://affirmations-api-by-apirobots.p.rapidapi.com/v1/affirmations/categories/%7Bcategory%7D/random",
+        // "https://affirmations-api-by-apirobots.p.rapidapi.com/v1/affirmations/categories/success/random",
+        // "https://affirmations-api-by-apirobots.p.rapidapi.com/v1/affirmations/categories/%7Bcategory%7D/random",
         // "https://api.apirobots.pro/v1/affirmations/categories/success/random",
         {
+          method: "GET",
           headers: {
-            "x-rapidapi-key":
-              "4505a71a6emshddcb535de67b373p184dbfjsn64ed93458afb", // Ersetze mit deinem echten API-Key
-            "x-rapidapi-host": "affirmations-api-by-apirobots.p.rapidapi.com",
+            // "x-rapidapi-host": "affirmations-api-by-apirobots.p.rapidapi.com",
+            // "x-rapidapi-key":
+            //   "4505a71a6emshddcb535de67b373p184dbfjsn64ed93458afb",
           },
         }
       );
@@ -34,10 +36,10 @@ export default function Dashboard() {
       setAffirmation(text);
       // setAffirmation(data.text);
       // console.log("dataInDaschboard", data);
-      return data.text;
+      return text;
     } catch (error) {
       console.error("Fehler beim Laden der Affirmation:", error);
-      return "Heute ist ein guter Tag für deinen Erfolg!";
+      return "„Wie eine Pflanze wächst auch dein Wohlstand – mit Geduld, Pflege und Klarheit.“ "; //Heute ist ein guter Tag für deinen Erfolg!
     }
   };
   useEffect(() => {
@@ -63,9 +65,9 @@ export default function Dashboard() {
           Willkommen {user?.name || "Freund"}!
         </h1>
 
-        <div className="bg-yellow-100 text-yellow-900 p-6 rounded-lg shadow-md text-center text-lg italic">
+        {/* <div className="bg-yellow-100 text-yellow-900 p-6 rounded-lg shadow-md text-center text-lg italic">
           🌟 {affirmation || "Lade Affirmation..."}
-        </div>
+        </div> */}
 
         <p className="text-green-300 text-lg mb-6">
           Schön, dass du wieder da bist in deinem MindMoney-Dashboard.
@@ -73,8 +75,11 @@ export default function Dashboard() {
         <blockquote className="italic text-green-700 bg-amber-50 px-6 py-4 rounded-lg shadow-inner">
           <span className="block text-xl mb-2">🌱</span>
           <span className="block">
-            „Wie eine Pflanze wächst auch dein Wohlstand – mit Geduld, Pflege
-            und Klarheit.“
+            {" "}
+            {affirmation ||
+              "„Wie eine Pflanze wächst auch dein Wohlstand – mit Geduld, Pflege und Klarheit.“ "}
+            {/* „Wie eine Pflanze wächst auch dein Wohlstand – mit Geduld, Pflege
+            und Klarheit.“ */}
           </span>
         </blockquote>
       </div>

@@ -4,7 +4,11 @@ import { FaPlusCircle, FaMinusCircle } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { useAuth } from "../context/AuthContext";
 
-export default function BudgetForm({ onSuccess, isInitialExpense = false }) {
+export default function BudgetForm({
+  onSuccess,
+  isInitialExpense = false,
+  reload,
+}) {
   const [isExpense, setIsExpense] = useState(isInitialExpense);
   const { token } = useAuth();
   // const [isExpense, setIsExpense] = useState(false); // false = Einnahme
@@ -52,6 +56,7 @@ export default function BudgetForm({ onSuccess, isInitialExpense = false }) {
         date: new Date().toISOString().split("T")[0],
       });
 
+      if (reload) reload();
       if (onSuccess) onSuccess(); // z. B. Liste neu laden
     } catch (err) {
       Swal.fire("Fehler", err.message, "error");
