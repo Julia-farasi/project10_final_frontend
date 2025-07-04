@@ -18,6 +18,7 @@ export default function Budget() {
       });
       const data = await res.json();
       setTransactions(data);
+      console.log("TransacDaten hier:", data);
 
       const income = data
         .filter((t) => !t.is_expense)
@@ -131,7 +132,7 @@ export default function Budget() {
         {/* Letzte Transaktionen */}
         <div className="bg-[#194A41] border border-[#194A41] rounded-xl p-6 shadow">
           <h2 className="text-lg font-semibold text-[#C2FCEF] mb-4">
-            Deine Letzten Transaktionen
+            Deine Letzten Aktionen
           </h2>
           <div className="space-y-3">
             {transactions.length === 0 && (
