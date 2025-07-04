@@ -60,7 +60,7 @@ export default function Dashboard() {
       <div className=" bg-gradient-to-t from-amber-100 to-emerald-800 p-8 rounded-xl shadow-xl text-center max-w-xl w-full">
         {/* bg-gradient-to-t from-amber-100 to-emerald-700 */}
         <h1 className="text-3xl font-bold text-green-300 mb-2">
-          Willkommen {user.name}!
+          Willkommen {user?.name || "Freund"}!
         </h1>
 
         <div className="bg-yellow-100 text-yellow-900 p-6 rounded-lg shadow-md text-center text-lg italic">

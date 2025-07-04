@@ -4,17 +4,36 @@ import { createContext, useContext, useState, useEffect } from "react";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null); // oder z. B. { email, name }
-  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(localStorage.getItem("token") || null);
 
-  useEffect(() => {
-    if (token) {
-      // hier ggf. Token decoden + user setzen
-      setUser({}); // oder fetchUserFromToken(token)
-    }
-  }, [token]);
+  // Hole Userdaten vom Server bei vorhandenem Token
+  // useEffect(() => {
+  //   const fetchUser = async () => {
+  //     try {
+  //       const res = await fetch("http://localhost:8080/user/me", {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       });
 
-  //LOGIN
+  //       if (!res.ok) throw new Error("Token ungültig oder User nicht gefunden");
+
+  //       const data = await res.json();
+  //       console.log("✅ user from /me:", data);
+  //       setUser(data.user);
+  //     } catch (err) {
+  //       console.error("❌ Fehler beim Laden des Users:", err.message);
+  //       logout();
+  //     }
+  //   };
+
+  //   if (token) {
+  //     fetchUser();
+  //   }
+  // }, [token]);
+
+  // LOGIN
   const login = async (email, password) => {
     const res = await fetch("http://localhost:8080/user/login", {
       method: "POST",
@@ -23,17 +42,17 @@ export const AuthProvider = ({ children }) => {
     });
 
     const data = await res.json();
+
     if (!res.ok) {
       throw new Error(data.message || "Login fehlgeschlagen");
     }
-    console.log("dataInAuthContext", data);
+
     setToken(data.token);
     localStorage.setItem("token", data.token);
-    setUser(data.user);
-    console.log("userInAuthContext", user);
+    setUser(data.user); // optional, falls direkt mitgegeben
   };
 
-  //REGISTER
+  // REGISTER
   const register = async (name, email, password) => {
     const res = await fetch("http://localhost:8080/user", {
       method: "POST",
@@ -42,17 +61,16 @@ export const AuthProvider = ({ children }) => {
     });
 
     const data = await res.json();
+
     if (!res.ok) {
       if (res.status === 409) {
         throw new Error("Diese E-Mail ist bereits registriert.");
       }
       throw new Error(data.message || "Registrierung fehlgeschlagen");
     }
-
-    // await login(email, password); // optional
   };
 
-  //LOGOUT
+  // LOGOUT
   const logout = () => {
     setUser(null);
     setToken(null);
