@@ -19,28 +19,28 @@
 //     }
 //   };
 
-  //   useEffect(() => {
-  //     const today = new Date().toISOString().split("T")[0];
-  //     const saved = JSON.parse(localStorage.getItem("affirmationOfTheDay"));
+//   useEffect(() => {
+//     const today = new Date().toISOString().split("T")[0];
+//     const saved = JSON.parse(localStorage.getItem("affirmationOfTheDay"));
 
-  //     if (saved && saved.date === today) {
-  //       setAffirmation(saved.text);
-  //     } else {
-  //       fetchAffirmation().then((text) => {
-  //         setAffirmation(text);
-  //         localStorage.setItem(
-  //           "affirmationOfTheDay",
-  //           JSON.stringify({ date: today, text })
-  //         );
-  //       });
-  //     }
-  //   }, []);
+//     if (saved && saved.date === today) {
+//       setAffirmation(saved.text);
+//     } else {
+//       fetchAffirmation().then((text) => {
+//         setAffirmation(text);
+//         localStorage.setItem(
+//           "affirmationOfTheDay",
+//           JSON.stringify({ date: today, text })
+//         );
+//       });
+//     }
+//   }, []);
 
-  //   return (
-  //     // <div className="bg-yellow-100 text-yellow-900 p-6 rounded-lg shadow-md text-center text-lg italic">
-  //     //   🌟 {affirmation || "Lade Affirmation..."}
-  //     // </div>
-  //   );
-};
+//   return (
+//     // <div className="bg-yellow-100 text-yellow-900 p-6 rounded-lg shadow-md text-center text-lg italic">
+//     //   🌟 {affirmation || "Lade Affirmation..."}
+//     // </div>
+//   );
+// };
 
 // export default AffirmationOfTheDay;
