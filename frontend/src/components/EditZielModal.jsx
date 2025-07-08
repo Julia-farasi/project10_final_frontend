@@ -44,6 +44,7 @@ const EditZielModal = ({ isOpen, onClose, ziel, onZielUpdated }) => {
           <form onSubmit={handleSubmit} className="space-y-4">
             <input
               name="title"
+              placeholder="Titel"
               value={form.title}
               onChange={handleChange}
               required
@@ -51,6 +52,7 @@ const EditZielModal = ({ isOpen, onClose, ziel, onZielUpdated }) => {
             />
             <textarea
               name="description"
+              placeholder="Beschreibung"
               value={form.description}
               onChange={handleChange}
               className="w-full border p-2 rounded"
@@ -58,6 +60,7 @@ const EditZielModal = ({ isOpen, onClose, ziel, onZielUpdated }) => {
             <input
               name="target_amount"
               type="number"
+              placeholder="Zielbetrag (€)"
               value={form.target_amount}
               onChange={handleChange}
               required
@@ -66,7 +69,15 @@ const EditZielModal = ({ isOpen, onClose, ziel, onZielUpdated }) => {
             <input
               name="saved_amount"
               type="number"
+              placeholder="Bereits gespart (€)"
               value={form.saved_amount}
+              onChange={handleChange}
+              className="w-full border p-2 rounded"
+            />
+            <input
+              name="monthly_rate"
+              type="number"
+              placeholder="Monatliche Sparrate (€)"
               onChange={handleChange}
               className="w-full border p-2 rounded"
             />

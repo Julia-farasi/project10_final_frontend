@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { CgMathPlus, CgMathMinus } from "react-icons/cg";
 import BudgetForm from "../components/BudgetForm";
+import { FaTrashAlt } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 export default function Transactions() {
   const { token } = useAuth();
@@ -44,6 +46,47 @@ export default function Transactions() {
   );
   const diff = totalIncome - totalExpense;
 
+  const handleDelete = async (id) => {
+    const result = await Swal.fire({
+      title: "Bist du sicher?",
+      text: "Du kannst diesen Eintrag später nicht wiederherstellen.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Ja, löschen!",
+      cancelButtonText: "Abbrechen",
+    });
+
+    if (!result.isConfirmed) return;
+
+    try {
+      const res = await fetch(`http://localhost:8080/transaction/${id}`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      if (!res.ok) throw new Error("Löschen fehlgeschlagen");
+
+      await Swal.fire({
+        title: "Gelöscht!",
+        text: "Der Eintrag wurde entfernt.",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false,
+      });
+
+      fetchData(); // Aktuelle Tabelle neu laden
+    } catch (err) {
+      console.error("Fehler beim Löschen:", err);
+      Swal.fire({
+        title: "Fehler",
+        text: "Eintrag konnte nicht gelöscht werden.",
+        icon: "error",
+      });
+    }
+  };
+
   return (
     <div className="p-6 text-amber-50">
       <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
@@ -77,6 +120,7 @@ export default function Transactions() {
                 <th>Beschreibung</th>
                 <th>Kategorie</th>
                 <th>Datum</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -99,6 +143,16 @@ export default function Transactions() {
 
                   <td>{t.category || "—"}</td>
                   <td>{formatDate(t.date)}</td>
+
+                  <td className="text-right">
+                    <button
+                      onClick={() => handleDelete(t.id)}
+                      className="text-gray-400 cursor-pointer hover:text-red-600"
+                      title="Löschen"
+                    >
+                      <FaTrashAlt />
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -137,7 +191,7 @@ export default function Transactions() {
               {income.map((t) => (
                 <tr
                   key={t.id}
-                  className="border-b border-emerald-800 hover:bg-emerald-100/30"
+                  className="border-b border-emerald-800 cursor-pointer hover:bg-emerald-100/30"
                 >
                   <td className="text-left">
                     +{parseFloat(t.amount).toFixed(2)} €
@@ -146,6 +200,16 @@ export default function Transactions() {
 
                   <td>{t.category || "—"}</td>
                   <td>{formatDate(t.date)}</td>
+
+                  <td className="text-right">
+                    <button
+                      onClick={() => handleDelete(t.id)}
+                      className="text-gray-400 hover:text-red-600 cursor-pointer"
+                      title="Löschen"
+                    >
+                      <FaTrashAlt />
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>

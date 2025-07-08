@@ -61,7 +61,7 @@ export default function Dashboard() {
     <div className="p-8 flex items-center justify-center">
       <div className=" bg-gradient-to-t from-amber-100 to-emerald-800 p-8 rounded-xl shadow-xl text-center max-w-xl w-full">
         {/* bg-gradient-to-t from-amber-100 to-emerald-700 */}
-        <h1 className="text-3xl font-bold text-green-300 mb-2">
+        <h1 className="text-3xl font-bold text-green-300 mb-2 font-mono">
           Willkommen {user?.name || "Freund"}!
         </h1>
 
@@ -69,7 +69,7 @@ export default function Dashboard() {
           🌟 {affirmation || "Lade Affirmation..."}
         </div> */}
 
-        <p className="text-green-300 text-lg mb-6">
+        <p className="text-green-300 text-lg mb-6 font-mono">
           Schön, dass du wieder da bist in deinem MindMoney-Dashboard.
         </p>
         <blockquote className="italic text-green-700 bg-amber-50 px-6 py-4 rounded-lg shadow-inner">

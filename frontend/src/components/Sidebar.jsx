@@ -20,14 +20,14 @@ const links = [
 
 export default function Sidebar() {
   return (
-    <aside className="bg-gradient-to-r from-gray-900 to-emerald-700 text-amber-50 w-50  p-6 space-y-4 shadow-xl">
-      <h2 className="text-xl font-bold mb-6">Dashboard</h2>
+    <aside className="bg-gradient-to-r from-[#014325] to-[#B1CBA6] text-amber-50 w-50  p-6 space-y-4 shadow-xl">
+      <h2 className="text-xl font-bold mb-6 font-mono">Dashboard</h2>
       {links.map((link) => (
         <NavLink
           key={link.path}
           to={`/${link.path}`}
           className={({ isActive }) =>
-            `flex items-center gap-3 p-3 rounded-lg transition-all 
+            `flex items-center gap-3 p-3 rounded-lg transition-all font-mono 
             ${isActive ? "bg-emerald-600 text-white" : "hover:bg-gray-800"}`
           }
         >

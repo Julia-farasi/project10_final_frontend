@@ -1,7 +1,7 @@
 @import "tailwindcss";
-body {
+/* body {
   background-color: beige;
-}
+} */
 
 /* background-image: url('/path/to/your/background.jpg'); Pfad zu deinem Hintergrundbild */
 /*background-image: url("/public/MindMoneyBackground1.png");  Pfad zu deinem Hintergrundbild */

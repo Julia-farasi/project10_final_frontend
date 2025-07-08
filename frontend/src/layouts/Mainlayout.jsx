@@ -20,7 +20,10 @@ import { Outlet } from "react-router-dom";
 
 export default function MainLayout() {
   return (
-    <div className="flex flex-col min-h-screen bg-gray-900 text-white">
+    <div
+      className="flex flex-col min-h-screen bg-cover bg-center"
+      style={{ backgroundImage: "url('/BildTest5.png')" }}
+    >
       <Navbar />
       <main className="flex-1">
         <Outlet />

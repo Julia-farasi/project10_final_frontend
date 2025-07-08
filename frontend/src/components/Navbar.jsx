@@ -23,7 +23,7 @@ export default function Navbar() {
         />
         <Link
           to="/"
-          className="text-2xl font-orbitron font-semibold tracking-wide hover:text-emerald-300 transition duration-300"
+          className="font-mono text-2xl font-orbitron font-semibold tracking-wide hover:text-emerald-300 transition duration-300"
         >
           MindMoney
         </Link>
@@ -35,14 +35,14 @@ export default function Navbar() {
           <>
             <Link
               to="/login"
-              className="flex items-center gap-2 relative px-4 py-2 rounded hover:text-emerald-300 transition duration-300 before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-emerald-300 hover:before:w-full before:transition-all before:duration-300"
+              className="flex font-mono items-center gap-2 relative px-4 py-2 rounded hover:text-emerald-300 transition duration-300 before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-emerald-300 hover:before:w-full before:transition-all before:duration-300"
             >
               <TbLogin2 />
               Login
             </Link>
             <Link
               to="/register"
-              className="flex items-center gap-2 relative px-4 py-2 rounded hover:text-emerald-300 transition duration-300 before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-emerald-300 hover:before:w-full before:transition-all before:duration-300"
+              className="flex font-mono items-center gap-2 relative px-4 py-2 rounded hover:text-emerald-300 transition duration-300 before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-emerald-300 hover:before:w-full before:transition-all before:duration-300"
             >
               <BsPersonPlusFill />
               Register
@@ -52,13 +52,13 @@ export default function Navbar() {
           <>
             <Link
               to="/dashboard"
-              className="flex items-center gap-2 relative px-4 py-2 rounded hover:text-emerald-300 transition duration-300 before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-emerald-300 hover:before:w-full before:transition-all before:duration-300"
+              className="flex font-mono items-center gap-2 relative px-4 py-2 rounded hover:text-emerald-300 transition duration-300 before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-emerald-300 hover:before:w-full before:transition-all before:duration-300"
             >
               Dashboard
             </Link>
             <button
               onClick={handleLogout}
-              className="flex items-center gap-2 relative px-4 py-2 rounded hover:text-emerald-300 transition duration-300 before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-emerald-300 hover:before:w-full before:transition-all before:duration-300"
+              className="flex font-mono items-center gap-2 relative px-4 py-2 rounded hover:text-emerald-300 transition duration-300 before:absolute before:bottom-0 before:left-0 before:w-0 before:h-0.5 before:bg-emerald-300 hover:before:w-full before:transition-all before:duration-300"
             >
               <TbLogin2 />
               Logout

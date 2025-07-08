@@ -1,4 +1,3 @@
-// src/layouts/DashboardLayout.jsx
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
@@ -6,7 +5,13 @@ import { Outlet } from "react-router-dom";
 
 export default function DashboardLayout() {
   return (
-    <div className="flex flex-col min-h-screen bg-gray-900 text-white">
+    <div
+      // className="flex flex-col min-h-screen text-white bg-no-repeat bg-top bg-cover"
+      className="flex flex-col min-h-screen bg-cover bg-no-repeat bg-center bg-[#014325]"
+      // style={{
+      //   backgroundImage: "url('/MindMoneyBild1.png')", // ✅ kein /public nötig
+      // }}
+    >
       <Navbar />
 
       <div className="flex flex-1">

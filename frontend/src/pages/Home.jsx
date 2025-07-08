@@ -1,4 +1,13 @@
 // src/pages/dashboard/Home.jsx
 export default function Home() {
-  return <h1 className="text-3xl font-bold">🏠 Willkommen im Home Bereich</h1>;
+  return (
+    <div
+      className="min-h-screen bg-cover bg-center"
+      // style={{ backgroundImage: "url('/BildTest5.png')" }}
+    >
+      <h1 className="text-4xl p-6 font-bold drop-shadow-lg">
+        Willkommen bei MindMoney
+      </h1>
+    </div>
+  );
 }
