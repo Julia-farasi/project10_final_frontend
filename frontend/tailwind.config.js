@@ -1,5 +1,17 @@
 // tailwind.config.js
 export default {
+  // tailwind.config.js
+  theme: {
+    extend: {
+      colors: {
+        primary: "#28713E",
+        lightgreen: "#D3EFDE",
+        midgreen: "#B1CBA6",
+        darkgreen: "#3F5A36",
+      },
+    },
+  },
+
   content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
