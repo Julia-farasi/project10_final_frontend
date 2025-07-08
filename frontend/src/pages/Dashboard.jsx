@@ -1,5 +1,6 @@
 import { useAuth } from "../context/AuthContext";
 import { useEffect, useState } from "react";
+import GrowthLine from "../components/GrowthLine"; // anpassen je nach Pfad
 
 export default function Dashboard() {
   const { user } = useAuth();
@@ -59,7 +60,7 @@ export default function Dashboard() {
 
   return (
     <div className="p-8 flex items-center justify-center">
-      <div className=" bg-gradient-to-t from-amber-100 to-emerald-800 p-8 rounded-xl shadow-xl text-center max-w-xl w-full">
+      <div className="flex flex-col  p-8 rounded-xl shadow-xl text-center max-w-xl w-full">
         {/* bg-gradient-to-t from-amber-100 to-emerald-700 */}
         <h1 className="text-3xl font-bold text-green-300 mb-2 font-mono">
           Willkommen {user?.name || "Freund"}!
@@ -72,7 +73,7 @@ export default function Dashboard() {
         <p className="text-green-300 text-lg mb-6 font-mono">
           Schön, dass du wieder da bist in deinem MindMoney-Dashboard.
         </p>
-        <blockquote className="italic text-green-700 bg-amber-50 px-6 py-4 rounded-lg shadow-inner">
+        <blockquote className="italic text-green-700 bg-gradient-to-b from-emerald-400 to-amber-100 px-6 py-4 rounded-lg shadow-inner">
           <span className="block text-xl mb-2">🌱</span>
           <span className="block">
             {" "}
@@ -82,6 +83,10 @@ export default function Dashboard() {
             und Klarheit.“ */}
           </span>
         </blockquote>
+
+        <div className="mt-6 rounded-xl bg-gray-900">
+          <GrowthLine />
+        </div>
       </div>
     </div>
   );

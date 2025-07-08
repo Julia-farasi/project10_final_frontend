@@ -7,6 +7,8 @@ import { format } from "date-fns";
 import { FaPiggyBank } from "react-icons/fa";
 import { GiTwoCoins } from "react-icons/gi";
 import RealisticPlant from "./RealisticPlant";
+import { useEffect } from "react";
+import { motion, useMotionValue, animate } from "framer-motion";
 
 export default function ZielCard({ ziel, onEdit, onDelete, onZielUpdated }) {
   const { id, title, description, target_amount, saved_amount, deadline } =
@@ -16,6 +18,34 @@ export default function ZielCard({ ziel, onEdit, onDelete, onZielUpdated }) {
   const [isDropping, setIsDropping] = useState(false);
 
   const progress = Math.min((currentSaved / target_amount) * 100, 100);
+
+  const AnimatedProgress = ({ value }) => (
+    <div className="h-4 w-full bg-gray-300 rounded overflow-hidden mt-2">
+      <motion.div
+        className="h-full bg-green-600"
+        initial={{ width: 0 }}
+        animate={{ width: `${value}%` }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+      />
+    </div>
+  );
+
+  const AnimatedNumber = ({ to }) => {
+    const count = useMotionValue(0);
+    const [display, setDisplay] = useState(0);
+
+    useEffect(() => {
+      const controls = animate(count, to, {
+        duration: 1,
+        onUpdate(value) {
+          setDisplay(value.toFixed(0));
+        },
+      });
+      return controls.stop;
+    }, [to]);
+
+    return <span>{display} €</span>;
+  };
 
   const handleSave = async () => {
     const amount = parseFloat(amountToAdd);
@@ -51,7 +81,7 @@ export default function ZielCard({ ziel, onEdit, onDelete, onZielUpdated }) {
   };
 
   return (
-    <div className="relative bg-[#D3EFDE] shadow-xl rounded-xl p-6 border border-[#B1CBA6] transition hover:shadow-2xl">
+    <div className="relative bg-[#67b4a3] shadow-xl rounded-xl p-6 border  transition hover:shadow-2xl">
       {/* Header */}
       <div className="absolute top-2 right-2 flex gap-2 text-sm">
         <button onClick={onEdit} className="text-[#28713E] hover:underline">
@@ -77,15 +107,19 @@ export default function ZielCard({ ziel, onEdit, onDelete, onZielUpdated }) {
       </div>
 
       {/* Fortschrittbalken */}
-      <div className="w-full bg-[#B1CBA6] h-3 rounded-full overflow-hidden mb-4">
-        <div
-          className="bg-[#28713E] h-full transition-all duration-500"
-          style={{ width: `${progress}%` }}
-        />
-      </div>
+      <AnimatedNumber to={ziel.saved_amount} />
+      <AnimatedProgress value={progress} />
+      {/* <div className="w-full bg-[#B1CBA6] h-3 rounded-full overflow-hidden mb-4"> */}
+      {/* <div className="bg-[#28713E] h-full transition-all duration-500" /> */}
+      {/* // style={{ width: `${progress}%` }} */}
+      {/* <motion.div
+          animate={{ width: `${progress}%` }}
+          transition={{ duration: 0.5 }}
+        /> */}
+      {/* </div> */}
 
       {/* Betrag hinzufügen */}
-      <div className="flex gap-2 items-center">
+      <div className="flex gap-2 items-center mt-4">
         <input
           type="number"
           min="1"
@@ -104,7 +138,7 @@ export default function ZielCard({ ziel, onEdit, onDelete, onZielUpdated }) {
 
       {/* Münzanimation */}
       <div className="relative mt-6 flex justify-center items-center h-10">
-        <FaPiggyBank size={40} className="text-[#3F5A36]" />
+        <FaPiggyBank size={40} className="text-[#ab7244]" />
         <GiTwoCoins
           className={clsx(
             "absolute text-yellow-400 text-3xl transition-transform duration-700 ease-out",

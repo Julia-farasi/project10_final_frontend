@@ -60,7 +60,7 @@ const Ziele = () => {
         <h1 className="text-3xl font-bold text-amber-50">🌱 Meine Sparziele</h1>
         <button
           onClick={() => setIsModalOpen(true)}
-          className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition"
+          className="bg-green-500 text-white px-4 py-2 rounded cursor-pointer hover:bg-green-600 transition"
         >
           + Neues Ziel
         </button>

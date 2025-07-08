@@ -1,4 +1,12 @@
 @import "tailwindcss";
+/* .btn-shine {
+  background: linear-gradient(45deg, #2ecc71, #27ae60);
+  background-size: 200% auto;
+  transition: background-position 0.3s;
+}
+.btn-shine:hover {
+  background-position: right center;
+} */
 /* body {
   background-color: beige;
 } */
