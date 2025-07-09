@@ -57,16 +57,30 @@ const Ziele = () => {
   return (
     <div className="p-6 max-w-6xl mx-auto">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold text-amber-50">🌱 Meine Sparziele</h1>
+        <h1 className="text-3xl font-bold text-amber-50">Meine Sparziele</h1>
+        {/* 🌱  */}
+        {/* <button
+          onClick={() => setIsModalOpen(true)}
+          className="bg-[#ca9cab] text-white px-4 py-2 rounded cursor-pointer hover:bg-green-400 transition"
+        > */}
         <button
           onClick={() => setIsModalOpen(true)}
-          className="bg-green-500 text-white px-4 py-2 rounded cursor-pointer hover:bg-green-600 transition"
+          className="cursor-pointer px-6 py-3 bg-gradient-to-r from-emerald-500 to-green-700 
+               text-white font-mono text-lg font-semibold 
+               rounded-xl shadow-lg shadow-amber-700
+               hover:shadow-emerald-500
+               hover:scale-105 hover:brightness-110 
+               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400 
+               transition duration-300 ease-in-out
+               "
         >
           + Neues Ziel
         </button>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="flex flex-wrap justify-center gap-6">
+        {/* {" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"} */}
+
         {ziele.map((ziel) => (
           <ZielCard
             key={ziel.id}

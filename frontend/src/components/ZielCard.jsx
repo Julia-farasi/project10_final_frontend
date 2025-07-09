@@ -20,9 +20,10 @@ export default function ZielCard({ ziel, onEdit, onDelete, onZielUpdated }) {
   const progress = Math.min((currentSaved / target_amount) * 100, 100);
 
   const AnimatedProgress = ({ value }) => (
-    <div className="h-4 w-full bg-gray-300 rounded overflow-hidden mt-2">
+    <div className="h-4 w-full bg-gray-300 rounded overflow-hidden mt-2 mb-2">
+      {/* shadow-lg shadow-green-200 */}
       <motion.div
-        className="h-full bg-green-600"
+        className="h-full bg-green-400"
         initial={{ width: 0 }}
         animate={{ width: `${value}%` }}
         transition={{ duration: 0.7, ease: "easeOut" }}
@@ -64,13 +65,13 @@ export default function ZielCard({ ziel, onEdit, onDelete, onZielUpdated }) {
         setCurrentSaved(updatedAmount);
         setAmountToAdd("");
         onZielUpdated && onZielUpdated(res.data); // optional callback für parent
-        Swal.fire({
-          icon: "success",
-          title: "Gespeichert!",
-          text: `${amount} € wurden deinem Ziel hinzugefügt.`,
-          timer: 1500,
-          showConfirmButton: false,
-        });
+        // Swal.fire({
+        //   icon: "success",
+        //   title: "Gespeichert!",
+        //   text: `${amount} € wurden deinem Ziel hinzugefügt.`,
+        //   timer: 1500,
+        //   showConfirmButton: false,
+        // });
       } catch (err) {
         console.error("Fehler beim Sparen:", err);
         Swal.fire("Fehler", "Konnte Betrag nicht speichern", "error");
@@ -81,34 +82,22 @@ export default function ZielCard({ ziel, onEdit, onDelete, onZielUpdated }) {
   };
 
   return (
-    <div className="relative bg-[#67b4a3] shadow-xl rounded-xl p-6 border  transition hover:shadow-2xl">
+    <div className="relative bg-[#389686] shadow-xl rounded-xl p-6 border transition hover:shadow-2xl">
       {/* Header */}
-      <div className="absolute top-2 right-2 flex gap-2 text-sm">
-        <button onClick={onEdit} className="text-[#28713E] hover:underline">
-          ✏️ Bearbeiten
-        </button>
-        <button onClick={onDelete} className="text-red-600 hover:underline">
-          🗑️ Löschen
-        </button>
-      </div>
 
+      {/* Pflanze */}
+      <div className="flex justify-center mb-4 ">
+        <RealisticPlant progress={progress} />
+      </div>
       {/* Inhalt */}
-      <h2 className="text-xl font-bold text-[#3F5A36] mb-1">{title}</h2>
+      <h2 className="text-xl font-bold text-[#203b35] mb-1">{title}</h2>
       <p className="text-[#3F5A36] mb-2">{description}</p>
       <p className="text-sm text-gray-700 mb-4">
-        🎯 Ziel: <strong>{target_amount} €</strong> <br />
-        💰 Gespart: <strong>{currentSaved.toFixed(2)} €</strong> <br />⏳
+        Ziel: <strong>{target_amount} €</strong> <br />
+        Gespart: <strong>{currentSaved.toFixed(2)} €</strong> <br />
         Deadline: {format(new Date(deadline), "dd.MM.yyyy")}
       </p>
 
-      {/* Pflanze */}
-      <div className="flex justify-center mb-4">
-        <RealisticPlant progress={progress} />
-      </div>
-
-      {/* Fortschrittbalken */}
-      <AnimatedNumber to={ziel.saved_amount} />
-      <AnimatedProgress value={progress} />
       {/* <div className="w-full bg-[#B1CBA6] h-3 rounded-full overflow-hidden mb-4"> */}
       {/* <div className="bg-[#28713E] h-full transition-all duration-500" /> */}
       {/* // style={{ width: `${progress}%` }} */}
@@ -118,6 +107,18 @@ export default function ZielCard({ ziel, onEdit, onDelete, onZielUpdated }) {
         /> */}
       {/* </div> */}
 
+      {/* Münzanimation */}
+      <div className="relative mt-6 flex justify-center items-center h-10">
+        <FaPiggyBank size={40} className="text-[#ecbe98]" />
+        <GiTwoCoins
+          className={clsx(
+            "absolute text-yellow-400 text-3xl transition-transform duration-700 ease-out",
+            isDropping
+              ? "translate-y-8 opacity-100"
+              : "opacity-0 -translate-y-4"
+          )}
+        />
+      </div>
       {/* Betrag hinzufügen */}
       <div className="flex gap-2 items-center mt-4">
         <input
@@ -130,23 +131,28 @@ export default function ZielCard({ ziel, onEdit, onDelete, onZielUpdated }) {
         />
         <button
           onClick={handleSave}
-          className="bg-[#28713E] hover:bg-[#3F5A36] text-white px-4 py-2 rounded font-semibold flex items-center gap-1 transition"
+          className="bg-[#28713E] hover:bg-[#3F5A36] text-white px-4 py-2 rounded font-semibold flex items-center gap-1 transition cursor-pointer"
         >
           <GiTwoCoins /> Spare
         </button>
       </div>
+      {/* Fortschrittbalken */}
+      <AnimatedProgress value={progress} />
+      <AnimatedNumber to={ziel.saved_amount} />
 
-      {/* Münzanimation */}
-      <div className="relative mt-6 flex justify-center items-center h-10">
-        <FaPiggyBank size={40} className="text-[#ab7244]" />
-        <GiTwoCoins
-          className={clsx(
-            "absolute text-yellow-400 text-3xl transition-transform duration-700 ease-out",
-            isDropping
-              ? "translate-y-8 opacity-100"
-              : "opacity-0 -translate-y-4"
-          )}
-        />
+      <div className="justify-end top-2 right-2 flex gap-2 text-sm">
+        <button
+          onClick={onEdit}
+          className="text-[#1e4229] hover:text-[#b8a47a] cursor-pointer"
+        >
+          ✏️ Bearbeiten
+        </button>
+        <button
+          onClick={onDelete}
+          className="text-red-800 hover:text-[#b8a47a] cursor-pointer"
+        >
+          🗑️ Löschen
+        </button>
       </div>
     </div>
   );

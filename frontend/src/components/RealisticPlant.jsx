@@ -24,7 +24,7 @@ const RealisticPlant = ({ progress }) => {
   />;
 
   return (
-    <div className="flex justify-center mt-4">
+    <div className="flex justify-center mt-4 shadow-lg shadow-green-200">
       <img
         src={getImage()}
         alt="Pflanzenstadium"

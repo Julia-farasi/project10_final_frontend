@@ -4,6 +4,7 @@ import { CgMathPlus, CgMathMinus } from "react-icons/cg";
 import BudgetForm from "../components/BudgetForm";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 export default function Transactions() {
   const { token } = useAuth();
@@ -94,7 +95,14 @@ export default function Transactions() {
         <select
           value={month}
           onChange={(e) => setMonth(e.target.value)}
-          className="p-2 rounded border border-[#389898] bg-[#389898] text-amber-50"
+          // p-2 rounded border border-[#389898] bg-[#389898] text-amber-50
+          className="cursor-pointer px-6 py-3 bg-gradient-to-r from-emerald-500 to-green-700 
+               text-amber-50 font-mono text-lg font-semibold 
+               rounded-xl shadow-lg shadow-amber-400 bg-emerald-500
+               hover:shadow-emerald-100
+               hover:scale-105 hover:brightness-110 
+               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400 
+               transition duration-300 ease-in-out"
         >
           {generateMonthOptions().map((m) => (
             <option key={m.value} value={m.value}>
@@ -259,8 +267,12 @@ export default function Transactions() {
         </div>
         //
       )}
+      <Link to="/dashboard/ziele">
+        <div className="mt-12 text-white text-center italic">
+          Weiter geht's zu Deinen Zielen...
+        </div>
+      </Link>
     </div>
-    ///
   );
 }
 

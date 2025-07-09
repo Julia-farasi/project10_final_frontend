@@ -43,8 +43,8 @@ const CreateZielModal = ({ isOpen, onClose, onZielCreated }) => {
         {/* Ersetze das hier 👇 */}
         <div className="fixed inset-0 bg-black opacity-30" aria-hidden="true" />
 
-        <div className="bg-white rounded-lg shadow-lg p-6 z-20 w-full max-w-md">
-          {/* <Dialog.Overlay className="fixed inset-0 bg-black opacity-30" />
+        <div className="bg-[#93c989] text-emerald-900 rounded-lg shadow-lg p-6 z-20 w-full max-w-md">
+          {/* <Dialog.Overlay className="fixed inset-0 bg-black opacity-30" />[#67b4a3]
         <div className="bg-white rounded-lg shadow-lg p-6 z-20 w-full max-w-md"> */}
           <Dialog.Title className="text-xl font-semibold mb-4">
             Neues Sparziel
@@ -96,13 +96,13 @@ const CreateZielModal = ({ isOpen, onClose, onZielCreated }) => {
               <button
                 type="button"
                 onClick={onClose}
-                className="px-4 py-2 bg-gray-200 rounded"
+                className="px-4 py-2 bg-gray-400 rounded cursor-pointer hover:bg-gray-300"
               >
                 Abbrechen
               </button>
               <button
                 type="submit"
-                className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+                className="px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600 cursor-pointer"
               >
                 Speichern
               </button>

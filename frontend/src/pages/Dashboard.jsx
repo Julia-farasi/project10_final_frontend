@@ -1,6 +1,7 @@
 import { useAuth } from "../context/AuthContext";
 import { useEffect, useState } from "react";
-import GrowthLine from "../components/GrowthLine"; // anpassen je nach Pfad
+import GrowthLine from "../components/GrowthLine";
+import { Link } from "react-router-dom";
 
 export default function Dashboard() {
   const { user } = useAuth();
@@ -59,8 +60,8 @@ export default function Dashboard() {
     return <div className="text-center text-white mt-10">Lade Daten...</div>;
 
   return (
-    <div className="p-8 flex items-center justify-center">
-      <div className="flex flex-col  p-8 rounded-xl shadow-xl text-center max-w-xl w-full">
+    <div className="flex items-center justify-center">
+      <div className="flex flex-col p-8 rounded-xl bg-[#014325] text-center max-w-xl w-full">
         {/* bg-gradient-to-t from-amber-100 to-emerald-700 */}
         <h1 className="text-3xl font-bold text-green-300 mb-2 font-mono">
           Willkommen {user?.name || "Freund"}!
@@ -71,7 +72,8 @@ export default function Dashboard() {
         </div> */}
 
         <p className="text-green-300 text-lg mb-6 font-mono">
-          Schön, dass du wieder da bist in deinem MindMoney-Dashboard.
+          Schön, dass du wieder da bist in deinem MindMoney-Dashboard. Verwalte
+          ab jetzt Deine Finanzen bewußt!
         </p>
         <blockquote className="italic text-green-700 bg-gradient-to-b from-emerald-400 to-amber-100 px-6 py-4 rounded-lg shadow-inner">
           <span className="block text-xl mb-2">🌱</span>
@@ -83,8 +85,40 @@ export default function Dashboard() {
             und Klarheit.“ */}
           </span>
         </blockquote>
-
-        <div className="mt-6 rounded-xl bg-gray-900">
+        <div className="m-6 flex justify-center">
+          <Link to="/dashboard/budget">
+            <button
+              className="cursor-pointer px-6 py-3 bg-gradient-to-r from-emerald-500 to-green-700 
+               text-white font-mono text-lg font-semibold 
+               rounded-xl shadow-lg shadow-amber-400
+               hover:shadow-emerald-100
+               hover:scale-105 hover:brightness-110 
+               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-400 
+               transition duration-300 ease-in-out
+               "
+            >
+              💸 Los geht's!
+            </button>
+          </Link>
+        </div>
+        {/* <div className="m-6 flex justify-center">
+          <Link to="/dashboard/budget">
+            <button
+              className="px-6 py-3 bg-gradient-to-br from-emerald-500 via-green-600 to-green-700 
+                 text-white font-mono text-lg font-semibold 
+                 rounded-xl shadow-[0_4px_8px_rgba(0,0,0,0.2),inset_0_-2px_4px_rgba(255,255,255,0.1)]
+                 hover:shadow-[0_6px_12px_rgba(0,255,180,0.3),inset_0_-2px_6px_rgba(255,255,255,0.2)]
+                 hover:translate-y-[-2px]
+                 hover:brightness-110 
+                 active:scale-95
+                 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-300 
+                 transition-all duration-300 ease-in-out"
+            >
+              💸 Möchtest du deine Finanzen sehen?
+            </button>
+          </Link>
+        </div> */}
+        <div className="mt-2 rounded-xl bg-gray-900">
           <GrowthLine />
         </div>
       </div>

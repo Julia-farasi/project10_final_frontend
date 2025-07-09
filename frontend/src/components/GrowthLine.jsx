@@ -11,7 +11,7 @@ export default function GrowthLine() {
           y1="100"
           x2="300"
           y2="100"
-          stroke="#CBD5E1"
+          stroke="#22c55e"
           strokeWidth="1"
         />{" "}
         {/* X-Achse */}
@@ -20,7 +20,7 @@ export default function GrowthLine() {
           y1="0"
           x2="0"
           y2="100"
-          stroke="#CBD5E1"
+          stroke="#22c55e"
           strokeWidth="1"
         />{" "}
         {/* Y-Achse */}
@@ -34,10 +34,10 @@ export default function GrowthLine() {
         <text x="2" y="50" fontSize="10" fill="#64748b">
           Klarheit
         </text> */}
-        <text x="2" y="30" fontSize="10" fill="#64748b">
+        <text x="2" y="30" fontSize="10" fill="#648b71">
           Vertrauen
         </text>
-        <text x="2" y="8" fontSize="10" fill="#64748b">
+        <text x="2" y="8" fontSize="10" fill="#648b71">
           Flow
         </text>
         <text
@@ -47,7 +47,7 @@ export default function GrowthLine() {
           fill="#64748b"
           transform="rotate(45, 40, 115)"
         ></text>
-        <text x="5" y="110" fontSize="10" fill="#64748b">
+        <text x="5" y="110" fontSize="10" fill="#648b71">
           Neuanfang
         </text>
         {/* <text x="70" y="110" fontSize="10" fill="#64748b">
@@ -59,10 +59,10 @@ export default function GrowthLine() {
         <text x="170" y="110" fontSize="10" fill="#64748b">
           Momentum
         </text> */}
-        <text x="230" y="110" fontSize="10" fill="#64748b">
+        <text x="230" y="110" fontSize="10" fill="#648b71">
           Fokus
         </text>
-        <text x="270" y="110" fontSize="10" fill="#64748b">
+        <text x="270" y="110" fontSize="10" fill="#648b71">
           Erfolg
         </text>
         {/* Animierte Linie */}

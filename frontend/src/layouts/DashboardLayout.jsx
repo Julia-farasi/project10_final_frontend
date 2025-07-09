@@ -9,7 +9,7 @@ export default function DashboardLayout() {
       // className="flex flex-col min-h-screen text-white bg-no-repeat bg-top bg-cover"
       className="flex flex-col min-h-screen bg-cover bg-no-repeat bg-center bg-[#014325]"
       // style={{
-      //   backgroundImage: "url('/MindMoneyBild1.png')", // ✅ kein /public nötig
+      //   backgroundImage: "url('/MindmoneyBackground3.png')", // ✅ kein /public nötig // MindmoneyBackground3.png //MindMoneyBild2//BildTest5
       // }}
     >
       <Navbar />

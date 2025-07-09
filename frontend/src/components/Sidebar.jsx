@@ -20,7 +20,7 @@ const links = [
 
 export default function Sidebar() {
   return (
-    <aside className="bg-gradient-to-r from-[#014325] to-[#B1CBA6] text-amber-50 w-50  p-6 space-y-4 shadow-xl">
+    <aside className="bg-gradient-to-r from-emerald-900 to-emerald-600 text-amber-50 w-50  p-6 space-y-4 shadow-xl">
       <h2 className="text-xl font-bold mb-6 font-mono">Dashboard</h2>
       {links.map((link) => (
         <NavLink

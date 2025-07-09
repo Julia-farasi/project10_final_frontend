@@ -1,0 +1,47 @@
+/* Container Style */
+.select-container {
+  margin-top: 1rem;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 16px;
+}
+
+/* Base Select Styles */
+.select__control {
+  background-color: #1e293b; /* slate-800 */
+  border-color: #334155; /* slate-700 */
+  color: white;
+}
+
+.select__control--is-focused {
+  border-color: #81e4a7; /* amber */
+  box-shadow: 0 0 0 2px #81e4a7;
+}
+
+.select__menu {
+  background-color: #1e293b;
+  color: white;
+  border: 1px solid #334155;
+  z-index: 20;
+}
+
+.select__option {
+  background-color: #1e293b;
+  color: #f1f5f9;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.select__option--is-focused {
+  background-color: #334155;
+  color: #81e4a7;
+}
+
+.select__placeholder {
+  color: #94a3b8; /* slate-400 */
+}
+
+.select__single-value {
+  color: #81e4a7; /* amber */
+}

@@ -81,7 +81,6 @@ export default function Budget() {
   return (
     <div className="p-6">
       <h1 className="text-3xl font-bold text-amber-50 mb-6">💰 Budget</h1>
-
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Übersicht */}
         <motion.div
@@ -93,7 +92,7 @@ export default function Budget() {
           <h2 className="text-lg font-semibold text-[#C2FCEF] mb-4">
             Übersicht
           </h2>
-          <div className="space-y-2 text-[#C2FCEF]">
+          <div className="space-y-8 text-[#C2FCEF]">
             <div className="flex justify-between">
               <span>Einnahmen:</span>
               <AnimatedCounter
@@ -152,12 +151,12 @@ export default function Budget() {
           <h2 className="text-lg font-semibold text-[#C2FCEF] mb-4">
             Aktionen
           </h2>
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-6">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setShowForm({ type: "income" })}
-              className="flex items-center gap-2 bg-[#389686] hover:bg-emerald-600 text-white py-2 px-4 rounded shadow transition"
+              className="flex items-center gap-2 bg-[#389686] hover:bg-emerald-600 text-white py-2 px-4 rounded transition cursor-pointer shadow-lg shadow-amber-200"
             >
               <CgMathPlus />
               Einnahme erfassen
@@ -167,7 +166,7 @@ export default function Budget() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setShowForm({ type: "expense" })}
-              className="flex items-center gap-2 bg-[#0A2822] hover:bg-emerald-600 text-white py-2 px-4 rounded shadow transition"
+              className="flex items-center gap-2 bg-[#0A2822] hover:bg-emerald-600 text-white py-2 px-4 rounded transition cursor-pointer shadow-lg shadow-amber-200"
             >
               <CgMathMinus />
               Ausgabe erfassen
@@ -175,7 +174,7 @@ export default function Budget() {
 
             <Link
               to="/dashboard/transactions"
-              className="flex items-center gap-1 p-3 bg-[#194A41] hover:bg-emerald-600 text-white rounded text-center shadow transition"
+              className="flex items-center gap-1 p-3 bg-[#194A41] hover:bg-emerald-600 text-white rounded text-center transition shadow-lg shadow-amber-200"
             >
               <CgMenu />
               Gesamte Übersicht anzeigen
@@ -226,7 +225,6 @@ export default function Budget() {
           </div>
         </motion.div>
       </div>
-
       {/* Modal */}
       {showForm.type && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -259,10 +257,12 @@ export default function Budget() {
       <div className="mt-12">
         <LineChartMotion data={monthlyData} />
       </div>
-      {/* Platz für zukünftige Charts (z. B. mit recharts) */}
-      <div className="mt-12 text-white text-center italic">
-        📊 Wie geht es weiter...
-      </div>
+      {/* Verlinkung zur nächsten Übersicht.. */}
+      <Link to="/dashboard/transactions">
+        <div className="mt-12 text-white text-center italic">
+          Weiter geht's zu Deiner Übersicht...
+        </div>
+      </Link>
     </div>
   );
 }

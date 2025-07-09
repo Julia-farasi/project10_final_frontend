@@ -1,0 +1,131 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #121212 0%, #81e4a7 100%);
+  color: #ffffff;
+  min-height: 100vh;
+  color: #ffffff;
+}
+
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  padding: 10px;
+  font-size: 1rem;
+  width: 300px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background-color: #1f1f1f;
+  color: white;
+}
+
+.search-bar input::placeholder {
+  color: #888;
+}
+
+.search-bar button {
+  padding: 10px 16px;
+  font-size: 1rem;
+  background-color: #81e4a7;
+  color: #121212;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+  background-color: #00acc1;
+}
+
+.stock-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.stock-card {
+  background-color: #1f1f1f;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  width: 280px;
+  transition: transform 0.3s ease;
+}
+
+.stock-card:hover {
+  transform: translateY(-5px);
+}
+
+.stock-card h2 {
+  margin-top: 0;
+  font-size: 1.5em;
+  color: #81e4a7;
+}
+
+.stock-card p {
+  margin: 10px 0;
+}
+.select-container {
+  margin-top: 1rem;
+  margin-bottom: 2rem; /* <-- Abstand NACH dem Dropdown */
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 16px;
+}
+.stock-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* Favoritenseite */
+.favorites-page {
+  padding: 2rem;
+}
+
+/* Button Fallback */
+.button-clear {
+  background-color: #81e4a7; /* rot */
+  /* color: white; */
+  /* padding: 0.5rem 1rem; */
+  /* border-radius: 0.375rem; */
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  /* text-align: center; */
+  /* display: flex; */
+
+  color: #1e293b;
+  /* text-decoration: none; */
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.button-clear:hover {
+  background-color: #dc2626c1;
+  color: white;
+}
+h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+}
