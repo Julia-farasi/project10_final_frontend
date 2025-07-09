@@ -1,45 +1,58 @@
-import Select from "react-select";
-import tickerMap from "../data/tickerMap.json";
+import AsyncSelect from "react-select/async";
+import axios from "axios";
 import "../styles/ReactSelect.css";
-import "../styles/StockDisplay.css";
-//--------
-// MINIMALES override für dark-mode inline styles für react-select per JS-Override
+
 const customStyles = {
   control: (base, state) => ({
     ...base,
-    backgroundColor: "#1e293b", // dunkelgrauer Hintergrund
-    borderColor: state.isFocused ? "#81e4a7" : "#334155", // grün beim Fokus
+    backgroundColor: "#1e293b",
+    borderColor: state.isFocused ? "#81e4a7" : "#334155",
     boxShadow: state.isFocused ? "0 0 0 2px #81e4a7" : "none",
     color: "white",
   }),
   menu: (base) => ({
     ...base,
-    backgroundColor: "#1e293b", // Dropdown-Hintergrund dunkel
+    backgroundColor: "#1e293b",
     zIndex: 20,
   }),
   option: (base, state) => ({
     ...base,
     backgroundColor: state.isFocused ? "#334155" : "#1e293b",
-    color: state.isFocused ? "#81e4a7" : "#f1f5f9", // grün beim Hover
+    color: state.isFocused ? "#81e4a7" : "#f1f5f9",
   }),
   placeholder: (base) => ({
     ...base,
-    color: "#81e4a7", // Platzhalter grünlich
+    color: "#81e4a7",
   }),
   singleValue: (base) => ({
     ...base,
-    color: "#81e4a7", // aktuell gewählter Wert
+    color: "#81e4a7",
   }),
 };
-//-------
-//  Komponente zum Auswählen eines Aktien-Symbols per Dropdown
+
 const StockSearch = ({ onSymbolSelect }) => {
-  //  Optionen bauen aus JSON-Daten (symbol & name)
-  const options = Object.entries(tickerMap).map(([symbol, name]) => ({
-    value: symbol,
-    label: `${symbol} - ${name}`,
-  }));
-  //  Wenn Option gewählt wird ➝ nach oben weitergeben
+  const API_KEY = import.meta.env.VITE_API_KEY;
+
+  const loadOptions = async (inputValue) => {
+    if (!inputValue) return [];
+
+    try {
+      const res = await axios.get(
+        `https://api.twelvedata.com/symbol_search?symbol=${inputValue}&apikey=${API_KEY}`
+      );
+
+      if (!res.data || !res.data.data) return [];
+
+      return res.data.data.map((item) => ({
+        value: item.symbol,
+        label: `${item.symbol} - ${item.instrument_name}`,
+      }));
+    } catch (error) {
+      console.error("❌ Fehler beim Laden der Symbolsuche:", error);
+      return [];
+    }
+  };
+
   const handleChange = (selectedOption) => {
     if (selectedOption) {
       onSymbolSelect(selectedOption.value);
@@ -48,25 +61,17 @@ const StockSearch = ({ onSymbolSelect }) => {
 
   return (
     <div className="select-container">
-      <h2 className="font-mono">Wähle hier eine Aktien aus:</h2>
-      {/*  React-Select Dropdown mit Styling & Datenbindung */}
-      <Select
-        options={options}
+      <h3 className="font-mono text-white mb-2">Wähle ein Wertpapier:</h3>
+      <AsyncSelect
+        loadOptions={loadOptions}
         onChange={handleChange}
-        placeholder="Wähle eine Aktie..."
+        // placeholder="Suche Aktie oder ETF..."
         isClearable
-        className="select-container"
-        classNamePrefix="select"
         styles={customStyles}
+        className="text-sm"
       />
     </div>
   );
 };
 
 export default StockSearch;
-
-// tickerMap.json	Enthält "AAPL": "Apple Inc.", usw.
-// options	Wandelt die JSON in Dropdown-Optionen um
-// handleChange()	Gibt ausgewähltes Symbol an onSymbolSelect() weiter
-// react-select	Modernes Dropdown mit Suchfunktion
-// customStyles	Erzwingt Darkmode und Custom Look

@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { BsPersonPlusFill } from "react-icons/bs";
 import { TbLogin2 } from "react-icons/tb";
+// import Logo from "./components/Logo";
 
 export default function Navbar() {
   const { user, logout } = useAuth();
