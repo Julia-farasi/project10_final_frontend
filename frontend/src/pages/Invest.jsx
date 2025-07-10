@@ -32,71 +32,54 @@ function Invest() {
 
   return (
     <>
-      {" "}
       <div className="p-6 text-white">
-        <h1 className="text-2xl font-mono mb-6 text-center">
-          📈 Aktien & ETFs vergleichen
-        </h1>
+        <h1 className="text-3xl font-mono mb-6">Investment</h1>
 
         {/* Zwei Spalten nebeneinander */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-          {/* Linke Spalte: Aktie */}
-          <div className="bg-slate-800 p-4 rounded-xl shadow-lg">
-            <h2 className="text-lg font-semibold text-emerald-300 mb-2">
+          {/* Linke Spalte: Aktien */}
+          <div className=" p-4 rounded-xl shadow-lg">
+            <h2 className="text-2xl text-center font-mono text-emerald-300 mb-2">
               Aktie auswählen
             </h2>
-            {/* <StockSearch onSymbolSelect={(symbol) => setStockSymbol(symbol)} /> */}
             <StockSearch
               onSymbolSelect={handleStockSelect}
               placeholder="Aktie suchen..."
             />
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-6">
+              hallo
+              {stockSymbol.map((symbol) => (
+                <StockPriceDisplay key={symbol} symbol={symbol} />
+              ))}
+            </div>
           </div>
 
-          {/* Rechte Spalte: ETF */}
-          <div className="bg-slate-800 p-4 rounded-xl shadow-lg">
-            <h2 className="text-lg font-semibold text-yellow-300 mb-2">
+          {/* Rechte Spalte: ETFs */}
+          <div className=" p-4 rounded-xl shadow-lg">
+            <h2 className="text-2xl text-center font-mono text-yellow-300 mb-2">
               ETF auswählen
             </h2>
-            {/* <StockSearch onSymbolSelect={(symbol) => setEtfSymbol(symbol)} /> */}
             <StockSearch
               onSymbolSelect={handleEtfSelect}
               placeholder="ETF suchen..."
             />
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-6">
+              *
+              {etfSymbol.map((symbol) => (
+                <EtfPriceDisplay key={symbol} symbol={symbol} />
+              ))}
+            </div>
           </div>
         </div>
-
-        {/* Ausgabe der Karten */}
-        <div className="stock-container">
-          {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-8"> */}
-          {stockSymbol.map((symbol) => (
-            <StockPriceDisplay key={symbol} symbol={symbol} />
-          ))}
-        </div>
-        <div className="stock-container">
-          {" "}
-          {etfSymbol.map((symbol) => (
-            <EtfPriceDisplay key={symbol} symbol={symbol} />
-          ))}
-        </div>
       </div>
-      {/* <div className="font-mono text-2xl">Investment-News</div>
-      <div className="dashboard-container"> */}
-      {/*  Dropdown zur Symbolauswahl */}
-      {/* <StockSearch onSymbolSelect={handleSymbolSelect} /> */}
-      {/* Anzeige der Stock Cards */}
-      {/* <div className="stock-container">
-          {symbols.map((symbol) => ( */}
-      {/* // Jede Karte zeigt Kursinfos für ein Symbol
-        //     <StockPriceDisplay key={symbol} symbol={symbol} />
-        //   ))}
-        // </div> */}
       {/* Verlinkung zur nächsten Übersicht.. */}
       <Link to="/dashboard">
         <div className="mt-12 text-white text-center italic">
-          Zurück zu Deinem Dashboard...
+          „Befasse Dich mit Deinem Geld, sonst tut es jemand anderes!“
         </div>
       </Link>
-      {/* </div> */}
     </>
   );
 }

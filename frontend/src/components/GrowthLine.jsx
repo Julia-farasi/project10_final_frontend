@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function GrowthLine() {
   return (
-    <div className="relative w-full h-48 md:h-64 lg:h-72 rounded-xl shadow border p-4">
+    <div className="relative w-full h-48 md:h-64 lg:h-72 rounded-xl shadow p-4">
       <svg viewBox="0 0 300 100" className="w-full h-full">
         {/* Achsen */}
         <line

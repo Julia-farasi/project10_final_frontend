@@ -9,10 +9,8 @@ export default function LineChartMotion({ data }) {
   const scaleY = (value) => 100 - (value / maxY) * 100;
 
   return (
-    <div className="p-4 shadow-lg shadow-amber-200 bg-gray-800 rounded-xl mt-12 text-white max-w-lg ml-50">
-      <h2 className="text-xl font-bold mb-4 text-[#C2FCEF]">
-        📈 Monatsübersicht
-      </h2>
+    <div className="p-4 shadow-lg shadow-amber-200 bg-gray-800 rounded-xl mt-12 text-white max-w-lg ml-137">
+      <h2 className="text-xl font-mono mb-4 text-[#C2FCEF]">Monatsübersicht</h2>
       <div className="">
         <svg viewBox="0 0 300 100" className="h-40 w-full">
           {/* Einkommen-Linie */}

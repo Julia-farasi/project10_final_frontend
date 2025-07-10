@@ -82,7 +82,7 @@ export default function ZielCard({ ziel, onEdit, onDelete, onZielUpdated }) {
   };
 
   return (
-    <div className="relative bg-[#389686] shadow-xl rounded-xl p-6 border transition hover:shadow-2xl">
+    <div className="relative bg-[#389686] shadow-xl rounded-xl p-6 transition hover:shadow-2xl">
       {/* Header */}
 
       {/* Pflanze */}

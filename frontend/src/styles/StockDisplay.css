@@ -64,6 +64,13 @@ body {
   padding: 20px;
   width: 280px;
   transition: transform 0.3s ease;
+
+  /* position: relative; */
+  /* padding: 1rem; */
+  /* border-radius: 0.5rem; */
+  /* background-color: #1e293b; slate-800 */
+  /* color: white; */
+  /* box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); */
 }
 
 .stock-card:hover {

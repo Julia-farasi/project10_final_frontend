@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/StockDisplay.css";
 import tickerMap from "../data/tickerMap.json";
-// import FavoriteStar from "./FavoriteStar";
+import FavoriteStar from "../components/FavoriteStar";
 //  ChartJS + React-Wrapper
 import { Line } from "react-chartjs-2";
 import {
@@ -55,6 +55,21 @@ const StockPriceDisplay = ({ symbol }) => {
         setData(response.data);
       } catch (err) {
         console.error("Fehler beim Laden der Daten:", err);
+
+        if (err.response) {
+          const { status, data } = err.response;
+
+          // Spezielle Behandlung für TwelveData Fehlermeldungen
+          if (data && data.message?.includes("exceeded")) {
+            setError("API-Limit erreicht – bitte später erneut versuchen.");
+          } else if (status === 429) {
+            setError("Zu viele Anfragen – bitte kurz warten.");
+          } else {
+            setError("Daten konnten nicht geladen werden.");
+          }
+        } else {
+          setError("Netzwerkfehler – keine Verbindung möglich.");
+        }
       }
     };
     fetchData();
@@ -87,9 +102,9 @@ const StockPriceDisplay = ({ symbol }) => {
 
   // Komplette Card-Ansicht inkl. Favoriten-Stern und Chart
   return (
-    <div className="stock-card">
-      {/* <FavoriteStar symbol={symbol} /> */}
+    <div className="stock-card relative">
       {/* klickbarer Favoritenstern */}
+      <FavoriteStar symbol={symbol} />
       <h2>
         {symbol} – {companyName} Aktienkurs
       </h2>

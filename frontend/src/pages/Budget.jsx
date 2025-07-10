@@ -80,7 +80,9 @@ export default function Budget() {
 
   return (
     <div className="p-6">
-      <h1 className="text-3xl font-bold text-amber-50 mb-6">💰 Budget</h1>
+      <h1 className="text-3xl font-mono font-bold text-amber-50 mb-6">
+        💰 Budget
+      </h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Übersicht */}
         <motion.div
@@ -89,9 +91,7 @@ export default function Budget() {
           transition={{ duration: 0.5 }}
           className="bg-[#389686] border-[#389686] rounded-xl p-6 shadow"
         >
-          <h2 className="text-lg font-semibold text-[#C2FCEF] mb-4">
-            Übersicht
-          </h2>
+          <h2 className="text-lg font-mono text-[#C2FCEF] mb-4">Übersicht</h2>
           <div className="space-y-8 text-[#C2FCEF]">
             <div className="flex justify-between">
               <span>Einnahmen:</span>
@@ -109,7 +109,7 @@ export default function Budget() {
                 colorClass="text-[#f8ab64]"
               />
             </div>
-            <div className="flex justify-between font-bold">
+            <div className="flex justify-between font-bold text-[#c3d1ce]">
               <span>Differenz:</span>
               <AnimatedCounter
                 to={summary.diff}
@@ -122,15 +122,15 @@ export default function Budget() {
           </div>
 
           {/* Progress Bar */}
-          <div className="mt-4 h-3 w-full bg-green-200 rounded-full overflow-hidden relative">
+          <div className="mt-4 h-3 w-full bg-[#C2FCEF] rounded overflow-hidden relative">
             <motion.div
-              className="h-full bg-amber-300 absolute left-0 top-0"
+              className="h-full bg-[#f8ab64] absolute left-0 top-0"
               initial={{ width: 0 }}
               animate={{ width: `${incomePercent}%` }}
               transition={{ duration: 0.8 }}
             />
             <motion.div
-              className="h-full bg-lime-500 absolute top-0"
+              className="h-full bg-[#85e79e] absolute top-0"
               initial={{ width: 0 }}
               animate={{
                 width: `${expensePercent}%`,
@@ -148,9 +148,7 @@ export default function Budget() {
           transition={{ duration: 0.6 }}
           className="bg-[#296F63] border border-[#296F63] rounded-xl p-6 shadow"
         >
-          <h2 className="text-lg font-semibold text-[#C2FCEF] mb-4">
-            Aktionen
-          </h2>
+          <h2 className="text-lg font-mono text-[#C2FCEF] mb-4">Aktionen</h2>
           <div className="flex flex-col gap-6">
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -189,8 +187,8 @@ export default function Budget() {
           transition={{ duration: 0.7 }}
           className="bg-[#194A41] border border-[#194A41] rounded-xl p-6 shadow"
         >
-          <h2 className="text-lg font-semibold text-[#C2FCEF] mb-4">
-            Deine Letzten Aktionen
+          <h2 className="text-lg font-mono text-[#C2FCEF] mb-4">
+            Letzten Eingaben
           </h2>
           <div className="space-y-3">
             {transactions.length === 0 ? (
@@ -254,9 +252,11 @@ export default function Budget() {
           </motion.div>
         </div>
       )}
-      <div className="mt-12">
-        <LineChartMotion data={monthlyData} />
-      </div>
+      <Link to="/dashboard/transactions">
+        <div className="mt-12">
+          <LineChartMotion data={monthlyData} />
+        </div>
+      </Link>
       {/* Verlinkung zur nächsten Übersicht.. */}
       <Link to="/dashboard/transactions">
         <div className="mt-12 text-white text-center italic">
