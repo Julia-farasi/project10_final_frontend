@@ -34,11 +34,14 @@ const StockSearch = ({ onSymbolSelect }) => {
   const API_KEY = import.meta.env.VITE_API_KEY;
 
   const loadOptions = async (inputValue) => {
-    if (!inputValue) return [];
+    const search = inputValue || "AAPL"; // Wenn kein Input, z. B. AAPL als Default
+
+    // const loadOptions = async (inputValue) => {
+    //   if (!inputValue) return [];
 
     try {
       const res = await axios.get(
-        `https://api.twelvedata.com/symbol_search?symbol=${inputValue}&apikey=${API_KEY}`
+        `https://api.twelvedata.com/symbol_search?symbol=${search}&apikey=${API_KEY}`
       );
 
       if (!res.data || !res.data.data) return [];
@@ -61,14 +64,15 @@ const StockSearch = ({ onSymbolSelect }) => {
 
   return (
     <div className="select-container">
-      <h3 className="font-mono text-white mb-2">Wähle ein Wertpapier:</h3>
+      <h3 className="font-mono text-white mb-2">Wähle dein Wertpapier:</h3>
       <AsyncSelect
         loadOptions={loadOptions}
+        defaultOptions
         onChange={handleChange}
-        // placeholder="Suche Aktie oder ETF..."
+        placeholder="Suche Aktie..."
         isClearable
         styles={customStyles}
-        className="text-sm"
+        className="text-sm font-mono"
       />
     </div>
   );

@@ -26,7 +26,7 @@ export default function BudgetForm({
     e.preventDefault();
     const payload = {
       ...formData,
-      amount: parseFloat(formData.amount),
+      amount: parseFloat(formData.amount.replace(",", ".")),
       is_expense: isExpense,
     };
 

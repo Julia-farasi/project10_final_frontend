@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import "../styles/StockDisplay.css";
 import { Line } from "react-chartjs-2";
+import FavoriteStar from "../components/FavoriteStar";
+import "../styles/StockDisplay.css";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -29,15 +30,15 @@ const chartOptions = {
   },
   scales: {
     x: {
-      ticks: { color: "#facc15", maxTicksLimit: 5 },
+      ticks: { color: "#94a3b8", maxTicksLimit: 5 },
     },
     y: {
-      ticks: { color: "#facc15" },
+      ticks: { color: "#94a3b8" },
     },
   },
 };
 
-export default function EtfPriceDisplay({ symbol }) {
+export default function CryptoPriceDisplay({ symbol }) {
   const [data, setData] = useState(null);
   const API_KEY = import.meta.env.VITE_API_KEY;
 
@@ -49,7 +50,7 @@ export default function EtfPriceDisplay({ symbol }) {
         );
         setData(res.data);
       } catch (err) {
-        console.error("ETF-Datenfehler:", err);
+        console.error("Crypto-Datenfehler:", err);
       }
     };
     fetchData();
@@ -58,7 +59,7 @@ export default function EtfPriceDisplay({ symbol }) {
   if (!data || !data.values) return null;
 
   const latest = data.values[0];
-  const reversed = data.values.toReversed();
+  const reversed = [...data.values].reverse();
 
   const chartData = {
     labels: reversed.map((d) => d.datetime),
@@ -74,8 +75,9 @@ export default function EtfPriceDisplay({ symbol }) {
   };
 
   return (
-    <div className="stock-card bg-[#1e293b] text-white">
-      <h2 className="text-lg text-yellow-400 mb-2">{symbol} – ETF Kurs</h2>
+    <div className="stock-card relative bg-[#1e293b] text-white">
+      <FavoriteStar symbol={symbol} />
+      <h2 className="text-lg text-yellow-400 mb-2">{symbol} – Krypto Kurs</h2>
       <p>
         <strong>Letzter Kurs:</strong> {latest.close} $
       </p>
@@ -89,9 +91,9 @@ export default function EtfPriceDisplay({ symbol }) {
           <strong>Tief:</strong> {latest.low} $
         </p>
       )}
-      {latest.low && (
+      {latest.volume && (
         <p>
-          <strong>Handelsvolumen:</strong> {latest.volume} $
+          <strong>Handelsvolumen:</strong> {latest.volume}
         </p>
       )}
       <div className="mt-4">

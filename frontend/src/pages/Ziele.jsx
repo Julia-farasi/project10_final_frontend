@@ -6,6 +6,7 @@ import withReactContent from "sweetalert2-react-content";
 import ZielCard from "../components/ZielCard";
 import CreateZielModal from "../components/CreateZielModal";
 import EditZielModal from "../components/EditZielModal";
+import { Link } from "react-router";
 
 const Ziele = () => {
   const [ziele, setZiele] = useState([]);
@@ -57,7 +58,9 @@ const Ziele = () => {
   return (
     <div className="p-6 max-w-6xl mx-auto">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold text-amber-50">Meine Sparziele</h1>
+        <h1 className="text-3xl font-mono font-bold text-amber-50 mb-6">
+          Meine Sparziele
+        </h1>
         {/* 🌱  */}
         {/* <button
           onClick={() => setIsModalOpen(true)}
@@ -107,6 +110,18 @@ const Ziele = () => {
         onClose={() => setIsModalOpen(false)}
         onZielCreated={(newZiel) => setZiele((prev) => [...prev, newZiel])}
       />
+      <Link to="/dashboard">
+        <div className="mt-12 text-white text-lg text-center italic">
+          „Wie eine Pflanze wächst auch dein Wohlstand – mit Geduld, Pflege und
+          Klarheit.“ →
+        </div>
+      </Link>
+
+      <Link to="/dashboard/invest">
+        <div className="mt-12 text-white text-center italic">
+          Investiere und lege Dein Geld smart an →
+        </div>
+      </Link>
     </div>
   );
 };

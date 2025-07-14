@@ -91,7 +91,9 @@ export default function Transactions() {
   return (
     <div className="p-6 text-amber-50">
       <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
-        <h1 className="text-2xl font-bold">📋 Deine Finanzen</h1>
+        <h1 className="text-3xl font-mono font-bold text-amber-50 mb-6">
+          📋 Deine Finanzen
+        </h1>
         <select
           value={month}
           onChange={(e) => setMonth(e.target.value)}
@@ -269,7 +271,7 @@ export default function Transactions() {
       )}
       <Link to="/dashboard/ziele">
         <div className="mt-12 text-white text-center italic">
-          Weiter geht's zu Deinen Zielen...
+          Weiter geht's zu Deinen Sparzielen →
         </div>
       </Link>
     </div>

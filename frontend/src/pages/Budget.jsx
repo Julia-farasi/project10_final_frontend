@@ -21,16 +21,16 @@ export default function Budget() {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
-      setTransactions(data);
+      setTransactions(data); // Nur Transaktionen speichern – keine Zusammenfassung hier
 
-      const income = data
-        .filter((t) => !t.is_expense)
-        .reduce((sum, t) => sum + parseFloat(t.amount), 0);
-      const expense = data
-        .filter((t) => t.is_expense)
-        .reduce((sum, t) => sum + parseFloat(t.amount), 0);
+      // const income = data
+      //   .filter((t) => !t.is_expense)
+      //   .reduce((sum, t) => sum + parseFloat(t.amount), 0);
+      // const expense = data
+      //   .filter((t) => t.is_expense)
+      //   .reduce((sum, t) => sum + parseFloat(t.amount), 0);
 
-      setSummary({ income, expense, diff: income - expense });
+      // setSummary({ income, expense, diff: income - expense });
     } catch (err) {
       console.error("Fehler beim Laden der Transaktionen:", err);
     }
@@ -70,6 +70,21 @@ export default function Budget() {
         }));
 
         setMonthlyData(formatted);
+        // 👇 Berechne aktuelle Monatsdaten
+        const now = new Date();
+        const currentMonthName = now.toLocaleString("de-DE", {
+          month: "short",
+        });
+
+        const currentMonthData = formatted.find(
+          (item) => item.month === currentMonthName
+        );
+
+        if (currentMonthData) {
+          const income = currentMonthData.income || 0;
+          const expense = currentMonthData.expense || 0;
+          setSummary({ income, expense, diff: income - expense });
+        }
       } catch (err) {
         console.error("❌ Monatsdaten-Fehler:", err);
       }
@@ -124,13 +139,13 @@ export default function Budget() {
           {/* Progress Bar */}
           <div className="mt-4 h-3 w-full bg-[#C2FCEF] rounded overflow-hidden relative">
             <motion.div
-              className="h-full bg-[#f8ab64] absolute left-0 top-0"
+              className="h-full bg-[#85e79e] absolute left-0 top-0"
               initial={{ width: 0 }}
               animate={{ width: `${incomePercent}%` }}
               transition={{ duration: 0.8 }}
             />
             <motion.div
-              className="h-full bg-[#85e79e] absolute top-0"
+              className="h-full bg-[#f8ab64] absolute top-0"
               initial={{ width: 0 }}
               animate={{
                 width: `${expensePercent}%`,
@@ -260,7 +275,7 @@ export default function Budget() {
       {/* Verlinkung zur nächsten Übersicht.. */}
       <Link to="/dashboard/transactions">
         <div className="mt-12 text-white text-center italic">
-          Weiter geht's zu Deiner Übersicht...
+          Weiter geht's zu Deiner Finanz-Übersicht →
         </div>
       </Link>
     </div>

@@ -30,7 +30,7 @@ export default function Dashboard() {
         }
       } catch (err) {
         console.error("Fehler beim Laden der Affirmation:", err);
-        setError("Erfolg ist kein Zufall, sondern eine Entscheidung.");
+        setError("„Erfolg ist kein Zufall, sondern eine Entscheidung.“");
       }
     };
 
@@ -54,6 +54,7 @@ export default function Dashboard() {
         </p>
 
         <blockquote className="italic text-green-700 bg-gradient-to-b from-emerald-400 to-amber-100 px-6 py-4 rounded-lg shadow-inner">
+          <span className="block mb-2">Deine heutige Affirmation: </span>
           <span className="block text-xl mb-2">🌱</span>
           <span className="block">
             {affirmation ||

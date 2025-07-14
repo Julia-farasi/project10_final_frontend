@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
 
 const Zusatz = () => {
   const [news, setNews] = useState([]);
@@ -37,7 +38,7 @@ const Zusatz = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
-      <h2 className="text-3xl font-bold mb-6 text-amber-50 font-mono">
+      <h2 className="text-3xl font-mono font-bold text-amber-50 mb-6">
         Aktuelle Finanznachrichten
         {/* (Marketaux) */}
       </h2>
@@ -85,6 +86,12 @@ const Zusatz = () => {
           </div>
         ))}
       </div>
+      {/* Verlinkung zur nächsten Übersicht.. */}
+      <Link to="/dashboard">
+        <div className="mt-30 text-white text-center text-lg italic">
+          „Befasse Dich mit Deinem Geld, sonst tut es jemand anderes!“
+        </div>
+      </Link>
     </div>
   );
 };

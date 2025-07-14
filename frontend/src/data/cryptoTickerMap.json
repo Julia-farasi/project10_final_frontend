@@ -1,0 +1,19 @@
+{
+  "cryptocurrencies": [
+    { "symbol": "BTC", "name": "Bitcoin" },
+    { "symbol": "ETH", "name": "Ethereum" },
+    { "symbol": "USDT", "name": "Tether" },
+    { "symbol": "XRP", "name": "XRP" },
+    { "symbol": "BNB", "name": "Binance Coin" },
+    { "symbol": "SOL", "name": "Solana" },
+    { "symbol": "USDC", "name": "USD Coin" },
+    { "symbol": "ADA", "name": "Cardano" },
+    { "symbol": "DOGE", "name": "Dogecoin" },
+    { "symbol": "TRX", "name": "TRON" },
+    { "symbol": "AVAX", "name": "Avalanche" },
+    { "symbol": "DOT", "name": "Polkadot" },
+    { "symbol": "SHIB", "name": "Shiba Inu" },
+    { "symbol": "SUI", "name": "Sui" },
+    { "symbol": "HBAR", "name": "Hedera Hashgraph" }
+  ]
+}
