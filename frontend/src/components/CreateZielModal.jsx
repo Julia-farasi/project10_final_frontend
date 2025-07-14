@@ -78,13 +78,13 @@ const CreateZielModal = ({ isOpen, onClose, onZielCreated }) => {
               onChange={handleChange}
               className="w-full border p-2 rounded"
             />
-            <input
+            {/* <input
               name="monthly_rate"
               type="number"
               placeholder="Monatliche Sparrate (€)"
               onChange={handleChange}
               className="w-full border p-2 rounded"
-            />
+            /> */}
             <input
               name="deadline"
               type="date"

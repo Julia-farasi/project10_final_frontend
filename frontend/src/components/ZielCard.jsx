@@ -82,11 +82,11 @@ export default function ZielCard({ ziel, onEdit, onDelete, onZielUpdated }) {
   };
 
   return (
-    <div className="relative bg-[#389686] shadow-xl rounded-xl p-6 transition hover:shadow-2xl">
+    <div className=" relative bg-[#48857b] rounded-xl p-6 transition">
       {/* Header */}
 
       {/* Pflanze */}
-      <div className="flex justify-center mb-4 ">
+      <div className="flex justify-center mb-4">
         <RealisticPlant progress={progress} />
       </div>
       {/* Inhalt */}
@@ -109,7 +109,7 @@ export default function ZielCard({ ziel, onEdit, onDelete, onZielUpdated }) {
 
       {/* Münzanimation */}
       <div className="relative mt-6 flex justify-center items-center h-10">
-        <FaPiggyBank size={40} className="text-[#ecbe98]" />
+        <FaPiggyBank size={50} className="text-[#ecbe98]" />
         <GiTwoCoins
           className={clsx(
             "absolute text-yellow-400 text-3xl transition-transform duration-700 ease-out",

@@ -1,7 +1,7 @@
-import stage1 from "../assets/plant-stage-1.png";
-import stage2 from "../assets/plant-stage-2.png";
-import stage3 from "../assets/plant-stage-3.png";
-import stage4 from "../assets/plant-stage-4.png";
+import stage1 from "../assets/Pflanze1.png";
+import stage2 from "../assets/Pflanze2.png";
+import stage3 from "../assets/Pflanze3.png";
+import stage4 from "../assets/Pflanze4.png";
 
 const RealisticPlant = ({ progress }) => {
   const getImage = () => {
@@ -24,11 +24,11 @@ const RealisticPlant = ({ progress }) => {
   />;
 
   return (
-    <div className="flex justify-center mt-4 shadow-lg shadow-green-200">
+    <div className="flex justify-center mt-4 ">
       <img
         src={getImage()}
         alt="Pflanzenstadium"
-        className="max-h-[200px] transition-transform duration-700"
+        className="max-h-[200px] transition-transform duration-700 rounded-lg shadow-amber-200 shadow-lg"
       />
     </div>
   );

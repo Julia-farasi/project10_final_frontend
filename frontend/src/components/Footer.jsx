@@ -9,7 +9,7 @@ function Footer() {
             href="#"
             className=" hover:text-emerald-300 transition-transform duration-500"
           >
-            Impressum
+            Let's Connect in LinkedIn: Julia-Kretschmer
           </a>
         </div>
 
