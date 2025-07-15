@@ -1,10 +1,10 @@
 // src/App.jsx
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { AuthProvider } from "./context/AuthContext";
+import { AuthProvider } from "./context/AuthContext.jsx";
 
-import MainLayout from "./layouts/MainLayout";
-import DashboardLayout from "./layouts/DashboardLayout";
-import ProtectedRoute from "./components/ProtectedRoute";
+import MainLayout from "./layouts/MainLayout.jsx";
+import DashboardLayout from "./layouts/DashboardLayout.jsx";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
 
 // Public Pages
 import Home from "./pages/Home";
