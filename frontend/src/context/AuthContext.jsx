@@ -35,11 +35,15 @@ export const AuthProvider = ({ children }) => {
 
   // LOGIN
   const login = async (email, password) => {
-    const res = await fetch("http://localhost:8080/user/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    });
+    const res = await fetch(
+      "https://backend-project10-finale.onrender.com/user/login",
+      {
+        // http://localhost:8080/user/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      }
+    );
 
     const data = await res.json();
 
@@ -54,11 +58,15 @@ export const AuthProvider = ({ children }) => {
 
   // REGISTER
   const register = async (name, email, password) => {
-    const res = await fetch("http://localhost:8080/user", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, password }),
-    });
+    const res = await fetch(
+      "https://backend-project10-finale.onrender.com/user",
+      {
+        // http://localhost:8080/user", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, password }),
+      }
+    );
 
     const data = await res.json();
 

@@ -31,14 +31,18 @@ export default function BudgetForm({
     };
 
     try {
-      const res = await fetch("http://localhost:8080/transaction", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(payload),
-      });
+      const res = await fetch(
+        "https://backend-project10-finale.onrender.com/transaction",
+        {
+          // http://localhost:8080/transaction
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(payload),
+        }
+      );
 
       if (!res.ok) throw new Error("Fehler beim Speichern");
 

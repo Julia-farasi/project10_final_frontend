@@ -17,7 +17,8 @@ const EditZielModal = ({ isOpen, onClose, ziel, onZielUpdated }) => {
     e.preventDefault();
     try {
       const res = await axios.put(
-        `http://localhost:8080/goals/${ziel.id}`,
+        `https://backend-project10-finale.onrender.com/goals/${ziel.id}`,
+        // http://localhost:8080/goals/${ziel.id}`,
         form
       );
       onZielUpdated(res.data);

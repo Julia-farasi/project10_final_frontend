@@ -15,13 +15,15 @@ export default function Transactions() {
 
   const fetchData = async () => {
     const resIncome = await fetch(
-      `http://localhost:8080/transaction/income?month=${month}`,
+      `https://backend-project10-finale.onrender.com/transaction/income?month=${month}`,
+      // http://localhost:8080/transaction/income?month=${month}`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
     );
     const resExpense = await fetch(
-      `http://localhost:8080/transaction/expense?month=${month}`,
+      `https://backend-project10-finale.onrender.com/transaction/expense?month=${month}`,
+      // http://localhost:8080/transaction/expense?month=${month}`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
@@ -62,10 +64,14 @@ export default function Transactions() {
     if (!result.isConfirmed) return;
 
     try {
-      const res = await fetch(`http://localhost:8080/transaction/${id}`, {
-        method: "DELETE",
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await fetch(
+        `https://backend-project10-finale.onrender.com/transaction/${id}`,
+        {
+          // http://localhost:8080/transaction/${id}`, {
+          method: "DELETE",
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
       if (!res.ok) throw new Error("Löschen fehlgeschlagen");
 

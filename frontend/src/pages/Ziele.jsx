@@ -16,7 +16,8 @@ const Ziele = () => {
 
   const loadZiele = () => {
     axios
-      .get("http://localhost:8080/goals")
+      .get("https://backend-project10-finale.onrender.com/goals")
+      // http://localhost:8080/goals")
       .then((res) => setZiele(res.data))
       .catch((err) => console.error(err));
   };
@@ -40,7 +41,10 @@ const Ziele = () => {
     if (!result.isConfirmed) return;
 
     try {
-      await axios.delete(`http://localhost:8080/goals/${id}`);
+      await axios.delete(
+        `https://backend-project10-finale.onrender.com/goals/${id}`
+      );
+      // http://localhost:8080/goals/${id}`);
       setZiele((prev) => prev.filter((ziel) => ziel.id !== id));
       await MySwal.fire("Gelöscht!", "Das Ziel wurde entfernt.", "success");
     } catch (err) {

@@ -17,9 +17,13 @@ export default function Budget() {
 
   const loadTransactions = async () => {
     try {
-      const res = await fetch("http://localhost:8080/transaction?limit=3", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await fetch(
+        "https://backend-project10-finale.onrender.com/transaction?limit=3",
+        {
+          // http://localhost:8080/transaction?limit=3", {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       const data = await res.json();
       setTransactions(data); // Nur Transaktionen speichern – keine Zusammenfassung hier
 
@@ -50,7 +54,8 @@ export default function Budget() {
     const fetchMonthlyData = async () => {
       try {
         const res = await fetch(
-          "http://localhost:8080/transaction/monthly-summary",
+          "https://backend-project10-finale.onrender.com/transaction/monthly-summary",
+          // http://localhost:8080/transaction/monthly-summary",
           {
             headers: {
               Authorization: `Bearer ${token}`,

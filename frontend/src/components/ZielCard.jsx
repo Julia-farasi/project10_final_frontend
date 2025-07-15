@@ -58,9 +58,13 @@ export default function ZielCard({ ziel, onEdit, onDelete, onZielUpdated }) {
       try {
         const updatedAmount = currentSaved + amount;
 
-        const res = await axios.patch(`http://localhost:8080/goals/${id}`, {
-          saved_amount: updatedAmount,
-        });
+        const res = await axios.patch(
+          `https://backend-project10-finale.onrender.com/goals/${id}`,
+          {
+            // http://localhost:8080/goals/${id}`, {
+            saved_amount: updatedAmount,
+          }
+        );
 
         setCurrentSaved(updatedAmount);
         setAmountToAdd("");
